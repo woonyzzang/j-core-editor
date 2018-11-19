@@ -1,0 +1,225 @@
+@charset "utf-8";
+
+@import '~open-color/open-color';
+
+/* =Header */
+header {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    height: 3.4em;
+    border-bottom: 1px solid $oc-black;
+    background-color: $oc-gray-9;
+    box-shadow: 0 0 .5rem rgba(28,33,40,0);
+
+    > h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0 1.6rem;
+
+        > a {
+            color: $oc-yellow-5;
+            text-decoration: none;
+            text-shadow: 1px 1px 0 $oc-black;
+        }
+    }
+}
+
+/* =Actions */
+.actions {
+    display: flex;
+    margin-left: -1rem;
+
+    > button[type=button] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        margin-left: 1rem;
+        padding-right: .8rem;
+        border-bottom: 1px solid transparent;
+        font-size: 1.2rem;
+
+        &:hover {
+            border-bottom-color: $oc-blue-8;
+        }
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    .btn_run {
+        color: $oc-white;
+
+        > span {
+            margin-left: .6rem;
+        }
+    }
+
+    > .combobox {
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        margin-left: 1rem;
+        color: $oc-white;
+
+        .material-icons {
+            font-size: 22px;
+        }
+
+        label {
+            margin-left: .6rem;
+            font-size: 1.2rem;
+        }
+
+        select {
+            margin-left: 1rem;
+            padding: .4rem;
+            border-radius: 4px;
+            border: 1px solid $oc-white;
+            background-color: transparent;
+            color: $oc-white;
+
+            &:focus {
+                outline: 0;
+            }
+        }
+
+        option {
+            color: $oc-black;
+        }
+    }
+}
+
+/* =Controls */
+.controls {
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    border: 1px solid $oc-white;
+    transform: translate(-50%, -50%);
+
+    > button[type=button] {
+        float: left;
+        margin-left: -1px;
+        padding: .8rem 1rem;
+        border-left: 1px solid $oc-white;
+        font-size: 1.2rem;
+        color: $oc-white;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:hover {
+            background-color: $oc-cyan-9;
+        }
+
+        &:focus {
+            outline: 0;
+        }
+
+        &.active {
+            background-color: $oc-cyan-8;
+
+            &:hover {
+                background-color: $oc-cyan-9;
+            }
+        }
+    }
+}
+
+/* =Utils */
+.utils {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    > a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 60px;
+        height: 100%;
+        padding: 0 .8rem;
+        font-size: 1.2rem;
+        color: $oc-white;
+        text-decoration: none;
+        vertical-align: top;
+
+        &.active,
+        &:hover {
+            background-color: $oc-black;
+        }
+
+        .material-icons {
+            font-size: 16px;
+        }
+
+        > span {
+            margin-left: .4rem;
+        }
+    }
+}
+
+/* =Chk Switch */
+.chk_switch {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+
+    input[type=checkbox] {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+
+        &:checked + .checkbox {
+            background-color: $oc-blue-9;
+
+            &:after {
+                left: 18px;
+            }
+        }
+    }
+
+    .checkbox {
+        display: inline-block;
+        position: relative;
+        top: 2px;
+        width: 31px;
+        height: 14px;
+        margin-right: .4rem;
+        border-radius: 14px;
+        background-color: rgba(0,0,0,.1);
+        vertical-align:top;
+        transition: all .15s;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            background-color: $oc-white;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 0 1px 0 rgba(0,0,0,.21);
+            transition: left .15s;
+        }
+    }
+
+    em {
+        display: inline-block;
+        font-style: normal;
+        font-size: 1.2rem;
+        vertical-align: top;
+    }
+}

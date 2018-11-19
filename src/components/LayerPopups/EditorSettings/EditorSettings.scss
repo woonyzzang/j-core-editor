@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+@import '~open-color/open-color';
+
+/* =LyPop Editor Settings */
+.ly_pop_editor_settings {
+    position: absolute;
+    top: 3.6em;
+    right: 8rem;
+    z-index: 1000;
+    width: 300px;
+    max-height: calc(100vh - 100px);
+    border-radius: 4px;
+    background-color: $oc-white;
+    box-shadow: 0 0 1px rgba(57,70,78,.15), 0 20px 55px -8px rgba(57,70,78,.25);
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .12s, transform .12s;
+    will-change: opacity, transform;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        right: 20px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-style: none double solid;
+        border-bottom: 10px solid;
+    }
+
+    &:before {
+        top: -11px;
+        border-bottom-color: rgba(57,70,78,.15);
+    }
+
+    &:after {
+        top: -10px;
+        border-bottom-color: $oc-gray-3;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &.hidden {
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
+    }
+
+    .ly_pop_header {
+        padding: 1rem 1.4rem;
+        border-radius: 4px 4px 0 0;
+        background-color: $oc-gray-3;
+
+        > h1 {
+            font-size: 1.4rem;
+        }
+    }
+
+    .ly_pop_content {
+        padding: 1.4rem;
+    }
+
+    section {
+        margin-top: -1px;
+        padding: 1rem 0;
+        border: 1px solid $oc-gray-4;
+        border-width: 1px 0;
+
+        &:first-of-type {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        &:last-of-type {
+            border-bottom: 0;
+        }
+    }
+
+    h2 {
+        font-family: Verdana;
+        font-size: 1.1rem;
+        letter-spacing: -.05rem;
+    }
+
+    .field_cont {
+        margin-top: 1rem;
+
+        li {
+            margin-top: .6rem;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .select_pairs {
+        display: grid;
+        grid-template-columns: calc(33% - 15px) calc(33% - 15px) 33%;
+        grid-gap: 15px;
+    }
+
+    .select_pair {
+        margin-top: .8rem;
+
+        > label {
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        > select {
+            -webkit-appearance: none;
+            width: 100%;
+            margin-top: .4rem;
+            padding: .6rem;
+            border: 0;
+            border-radius: 3px;
+            font-size: 1.2rem;
+            color: $oc-gray-7;
+            box-shadow: 0 0 0 1px $oc-gray-3;
+        }
+    }
+}

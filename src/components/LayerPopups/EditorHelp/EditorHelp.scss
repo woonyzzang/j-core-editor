@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+@import '~open-color/open-color';
+
+/* =LyPop Editor Help */
+.ly_pop_editor_help {
+    position: absolute;
+    top: 3.4em;
+    right: 0;
+    z-index: 1000;
+    width: 220px;
+    background-color: $oc-black;
+    opacity: 1;
+    transition: opacity .12s;
+    will-change: opacity;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .ly_pop_header {
+        padding: 1rem 1.4rem;
+
+        > h1 {
+            font-size: 1.4rem;
+            color: $oc-white;
+        }
+    }
+
+    .ly_pop_content {
+        padding: 1.4rem;
+    }
+
+    section {
+        margin-top: -1px;
+        padding: 1rem 0;
+        border: 1px solid $oc-gray-4;
+        border-width: 1px 0;
+        color: $oc-white;
+
+        &:first-of-type {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        &:last-of-type {
+            border-bottom: 0;
+        }
+    }
+
+    h2 {
+        font-family: Verdana;
+        font-size: 1.1rem;
+        letter-spacing: -.05rem;
+    }
+
+    .ly_pop_content {
+        ul {
+            margin-top:1rem;
+        }
+
+        li {
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: $oc-white;
+        }
+    }
+}

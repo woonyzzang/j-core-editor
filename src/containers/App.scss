@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+$material-icons-font-path: '~material-icons/iconfont/';
+//$material-icons-codepoints: () !default; /* Sass map of icon names and codepoints */
+//$material-icons-font-path: '' !default;
+//$material-icons-font-name: 'MaterialIcons-Regular' !default;
+//$material-icons-font-size: 24px !default;
+//$material-icons-font-family: 'Material Icons' !default;
+
+@import '~open-color/open-color';
+@import '~material-icons/iconfont/material-icons.scss';
+
+//.material-icons {
+//    @include material-icons();
+//}
+
+/* =Reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+:root,
+body {
+    height: 100%;
+}
+
+:root {
+    font-size: 10px;
+}
+
+body {
+    //min-width:1200px;
+    font-size: 1.4rem;
+    color: $oc-black;
+}
+
+#root,
+main {
+    height: 100%;
+}
+
+textarea {
+    border: 0;
+    background-color: transparent;
+    resize: none;
+}
+
+/* =Button */
+.btn {
+    border: 0;
+    background-color: transparent;
+    vertical-align: top;
+    cursor: pointer;
+
+    .material-icons {
+        font-size: 22px;
+        vertical-align: top;
+    }
+}
+
+/* =Layout */
+#wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#container {
+    flex: 1;
+}
+
+#content {
+    height: 100%;
+}

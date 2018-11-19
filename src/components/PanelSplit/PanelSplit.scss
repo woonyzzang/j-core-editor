@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+@import '~open-color/open-color';
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/monokai.css'; // 테마
+@import '~codemirror/addon/scroll/simplescrollbars.css'; // 스크롤바
+@import '~codemirror/addon/hint/show-hint.css'; // 스크롤바
+
+/* =Split */
+.splitter {
+    display: flex;
+    flex-direction:row;
+    height: 100%;
+
+    .gutter {
+        background-color: $oc-gray-9;
+        //background-repeat:no-repeat;
+        //background-position:50%;
+        cursor: col-resize;
+
+        //&.gutter-horizontal {
+        //    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+        //    cursor: col-resize;
+        //}
+        //
+        //&.gutter-vertical {
+        //    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+        //    cursor:row-resize;
+        //}
+    }
+
+    .panel {
+        display: flex;
+        overflow: hidden;
+        flex-direction: column;
+
+        > h1,
+        > strong {
+            padding: 1rem 1rem 1.2rem;
+            font-family: Verdana;
+            font-weight: normal;
+            font-size: 1.2rem;
+        }
+
+        > h1 {
+            background-color: $oc-gray-8;
+            color: $oc-white;
+        }
+
+        > strong {
+            display: block;
+            background-color: $oc-gray-1;
+        }
+    }
+
+    .editbox,
+    .previewbox {
+        flex: 1;
+        height: 200px;
+    }
+
+    .editbox{
+        &.default {
+            font-size: 1.4rem;
+        }
+
+        &.small {
+            font-size: 1.2rem;
+        }
+
+        &.big {
+            font-size: 1.6rem;
+        }
+
+        &.bigger {
+            font-size: 1.8rem;
+        }
+
+        &.jabba {
+            font-size: 2rem;
+        }
+    }
+
+    .previewbox {
+        display: flex;
+        flex-direction: column;
+
+        > iframe {
+            flex: 1;
+        }
+    }
+}
+
+/* =CodeMirror */
+.CodeMirror {
+    height: 100%;
+    background-color: $oc-gray-8!important;
+
+    .CodeMirror-gutters {
+        background-color: $oc-gray-8;
+    }
+
+    .CodeMirror-linenumber {
+        color: $oc-gray-6;
+    }
+
+    //.CodeMirror-activeline {}
+
+    .CodeMirror-activeline-background {
+        background-color: transparent;
+    }
+
+    &.CodeMirror-focused {
+        .CodeMirror-activeline-gutter .CodeMirror-linenumber {
+            color: $oc-gray-6;
+        }
+
+        .CodeMirror-activeline-background {
+            background-color: $oc-gray-7;
+        }
+    }
+}
+
+//.CodeMirror-matchingtag {
+//    border-bottom: 1px solid #f7ed7e;
+//    background-color: transparent;
+//}
+
+.CodeMirror-hints {
+    border-color: #2d333b;
+    background-color: #1c2128;
+}
+
+.CodeMirror-hint {
+    padding: .4rem;
+    color: $oc-white;
+}

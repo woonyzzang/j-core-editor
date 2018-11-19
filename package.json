@@ -1,0 +1,35 @@
+{
+  "name": "j-core-editor",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "codemirror": "^5.41.0",
+    "material-icons": "^0.2.3",
+    "open-color": "^1.6.3",
+    "react": "^16.6.3",
+    "react-codemirror": "^1.0.0",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1",
+    "react-split": "^2.0.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "node-sass": "^4.10.0"
+  }
+}
