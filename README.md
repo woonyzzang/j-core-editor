@@ -14,8 +14,5 @@
 - [ctrl] + [space]: code hint
 - [ctrl] + [enter]: Re-render output.
 
-### Support Browser
-- Chrome
-
 ## 버전
 v1.0.0
