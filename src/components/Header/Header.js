@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import axios from 'axios';
 
+import axios from 'axios';
 import classNames from 'classnames/bind';
 
 import { capitalizeFirstLetter } from '../Utils';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 // 액션 생성 함수 로드
-import * as codeMirrorEditorActions from '../../modules/codeMirrorEditor';
-import * as lyPopEditorActions from '../../modules/lyPopEditor';
+import * as codeMirrorEditorActions from '../../actions/codeMirrorEditor';
+import * as lyPopEditorActions from '../../actions/lyPopEditor';
 
 import styles from './Header.scss';
 
 class Header extends Component {
+    controlsRef = React.createRef();
+
     static defaultProps = {
-        headerTitle: 'J Editor'
+        headerTitle: 'J Editor',
+        onPanelChangeSize: () => console.warn('onPanelChangeSize not defined')
     }
 
     static propTypes = {
-        headerTitle: PropTypes.string.isRequired
+        headerTitle: PropTypes.string.isRequired,
+        onPanelChangeSize: PropTypes.func
     }
 
     state = {
@@ -73,14 +78,14 @@ class Header extends Component {
 
         $this.classList.toggle('active');
 
-        Array.from(this.refs.controls.children).forEach((elem) => {
+        Array.from(this.controlsRef.current.childNodes).forEach((elem) => {
             if (elem.classList.contains('active')) { arr.push(elem); }
         });
 
         // 에디터 패널 최소 1개 유지
         if (arr.length < 1) { $this.classList.add('active'); }
 
-        this.props.onPanelChangeSize(this.refs.controls);
+        this.props.onPanelChangeSize(this.controlsRef);
     }
 
     /** 유틸 버튼 actice 클래스 토글 이벤트 핸들러 */
@@ -124,7 +129,7 @@ class Header extends Component {
                     <button type="button" title="Shortcut: Command/Ctrl + Enter" onClick={this.props.onUpdateOutput} id="btnRun" className={cx('btn', 'btn_run')}><i className={cx('material-icons')}>play_arrow</i><span>Run</span></button>
                     <div className={cx('combobox')}>
                         <i className={cx('material-icons')}>list</i>
-                        <label htmlFor="component">Component</label>
+                        <label htmlFor="component">Module</label>
                         <select defaultValue={"none"} onChange={(e) => this.componentChange(e)} id="component">
                             {/* (() => { //IIFE 패턴 })() */}
                             <option value="none">none</option>
@@ -132,7 +137,7 @@ class Header extends Component {
                         </select>
                     </div>
                 </div>
-                <div ref="controls" className={cx('controls')}>
+                <div ref={this.controlsRef} className={cx('controls')}>
                     <button type="button" name="btnHtml" onClick={(e) => this.controlAcvtiveToggle(e)} className={cx('btn', 'active')}>HTML</button>
                     <button type="button" name="btnCss" onClick={(e) => this.controlAcvtiveToggle(e)} className={cx('btn', 'active')}>CSS</button>
                     <button type="button" name="btnJavascript" onClick={(e) => this.controlAcvtiveToggle(e)} className={cx('btn', 'active')}>JavaScript</button>

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import classNames from 'classnames/bind';
+
 import CodeMirror from 'react-codemirror';
 import 'codemirror/mode/xml/xml'; // HTML Syntax (필수)
 import 'codemirror/mode/css/css'; // CSS Syntax (필수)
@@ -24,8 +23,10 @@ import 'codemirror/keymap/sublime'; // sublime 키맵
 import 'codemirror/keymap/vim'; // vim 키맵
 import 'codemirror/keymap/emacs'; // emacs 키맵
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 // 액션 생성 함수 로드
-import * as codeMirrorEditorActions from '../../modules/codeMirrorEditor';
+import * as codeMirrorEditorActions from '../../actions/codeMirrorEditor';
 
 import styles from './PanelSplit.scss';
 
@@ -39,8 +40,7 @@ class PanelSplit extends Component {
     static propTypes = {
         panelName: PropTypes.string.isRequired,
         panelTitle: PropTypes.string.isRequired,
-        codeMirrorConfig: PropTypes.object,
-        onUpdatePanel: PropTypes.func
+        codeMirrorConfig: PropTypes.object
     }
     
     /** 에디터 패널 업데이트 변경 이벤트 핸들러 */

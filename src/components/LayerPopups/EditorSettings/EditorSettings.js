@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import classNames from 'classnames/bind';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 // 액션 생성 함수 로드
-import * as codeMirrorEditorActions from '../../../modules/codeMirrorEditor';
+import * as codeMirrorEditorActions from '../../../actions/codeMirrorEditor';
 
 import styles from './EditorSettings.scss';
 

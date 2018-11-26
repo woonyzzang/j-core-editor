@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import classNames from 'classnames/bind';
+
+import { connect } from 'react-redux';
 
 import styles from './EditorHelp.scss';
 
