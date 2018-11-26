@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import classNames from 'classnames/bind';
 
 import styles from './EditorHelp.scss';
 
 class EditorHelp extends Component {
-    static defaultProps = {
-        isLyPopEditorHelpShow: false
-    }
-
-    static propTypes = {
-        isLyPopEditorHelpShow: PropTypes.bool
-    }
-
     render() {
         const cx = classNames.bind(styles);
+        const { isLyPopEditorHelpShow } = this.props;
 
         return (
-            <article tabIndex={0} id="lyPopEditorHelp" className={cx('ly_pop', 'ly_pop_editor_help', {hidden: !this.props.isLyPopEditorHelpShow})}>
+            <article tabIndex={0} id="lyPopEditorHelp" className={cx('ly_pop', 'ly_pop_editor_help', {hidden: !isLyPopEditorHelpShow})}>
                 <div className={cx('ly_pop_header')}>
                     <h1>Editor Help</h1>
                 </div>
@@ -43,4 +36,8 @@ class EditorHelp extends Component {
     }
 }
 
-export default EditorHelp;
+export default connect(
+    (state) => ({
+        isLyPopEditorHelpShow:  state.lyPopEditor.get('isLyPopEditorHelpShow')
+    })
+)(EditorHelp);

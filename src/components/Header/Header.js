@@ -1,27 +1,69 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import axios from 'axios';
 
 import classNames from 'classnames/bind';
 
 import { capitalizeFirstLetter } from '../Utils';
+// 액션 생성 함수 로드
+import * as codeMirrorEditorActions from '../../modules/codeMirrorEditor';
+import * as lyPopEditorActions from '../../modules/lyPopEditor';
+
 import styles from './Header.scss';
 
 class Header extends Component {
     static defaultProps = {
-        headerTitle: 'J Editor',
-        controlAcvtiveToggle: () => console.warn('controlAcvtiveToggle not defined'),
-        utileActiveToggle: () => console.warn('utileActiveToggle not defined')
+        headerTitle: 'J Editor'
     }
 
     static propTypes = {
-        headerTitle: PropTypes.string.isRequired,
-        controlAcvtiveToggle: PropTypes.func,
-        utileActiveToggle: PropTypes.func
+        headerTitle: PropTypes.string.isRequired
     }
 
     state = {
         componentDatas: []
+    }
+
+    /** 컴포넌트 모듈 변경 */
+    componentChange = (e) => {
+        const { CodeMirrorEditorActions } = this.props;
+        const val = e.target.value;
+
+        switch (val) {
+            case 'none':
+                const deferred = new Promise((resolve) => {
+                    setTimeout(() => {
+                        CodeMirrorEditorActions.setComponent({htmlCode: '', cssCode: '', javascriptCode: ''});
+                        resolve();
+                    }, 250);
+                });
+
+                deferred.then(this.props.onUpdateOutput);
+                break;
+            default:
+                axios.get('http://127.0.0.1:3000/modules/data.json')
+                    .then((res) => { // SUCCESS
+                        res.data.forEach((data) => {
+                            if (val === data.module) {
+                                axios.all([axios.get(data.url.html), axios.get(data.url.css), axios.get(data.url.javascript)])
+                                    .then(axios.spread((htmlCode, cssCode, javascriptCode) => {
+                                        const deferred = new Promise((resolve) => {
+                                            setTimeout(() => {
+                                                CodeMirrorEditorActions.setComponent({htmlCode: htmlCode['data'], cssCode: cssCode['data'], javascriptCode: javascriptCode['data']});
+                                                resolve();
+                                            }, 250);
+                                        });
+
+                                        deferred.then(this.props.onUpdateOutput);
+                                    }));
+                            }
+                        });
+                    })
+                    .catch((res) => console.error(res)); // ERROR
+                break;
+        }
     }
 
     /** 컨트롤 버튼 active 클래스 토글 이벤트 핸들러 */
@@ -45,15 +87,13 @@ class Header extends Component {
     utileActiveToggle = (e) => {
         e.preventDefault();
 
+        const { LyPopEditorActions } = this.props;
         const $this = e.currentTarget;
+        const target = capitalizeFirstLetter($this.getAttribute('href'));
 
         $this.classList.toggle('active');
-        this.props.onEditorSettings($this.getAttribute('href'));
-    }
-
-    /** 컴포넌트 모듈 변경 */
-    componentChange = (e) => {
-        this.props.onComponentChange(e.target.value);
+        LyPopEditorActions.toggleEditorSettings(capitalizeFirstLetter(target.replace(/^[#]/g, '')));
+        document.querySelector(target).focus();
     }
 
     /** 첫 렌더링 시점 완료 (컴포넌트 라이프 사이클) */
@@ -107,4 +147,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default connect(
+    null,
+    (dispatch) => ({
+        CodeMirrorEditorActions: bindActionCreators(codeMirrorEditorActions, dispatch),
+        LyPopEditorActions: bindActionCreators(lyPopEditorActions, dispatch)
+    })
+)(Header);

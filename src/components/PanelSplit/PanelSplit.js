@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import classNames from 'classnames/bind';
 import CodeMirror from 'react-codemirror';
@@ -22,14 +24,16 @@ import 'codemirror/keymap/sublime'; // sublime 키맵
 import 'codemirror/keymap/vim'; // vim 키맵
 import 'codemirror/keymap/emacs'; // emacs 키맵
 
+// 액션 생성 함수 로드
+import * as codeMirrorEditorActions from '../../modules/codeMirrorEditor';
+
 import styles from './PanelSplit.scss';
 
 class PanelSplit extends Component {
     static defaultProps = {
         panelName: 'codeMirrorEditorHtml',
         panelTitle: 'Editor Panel',
-        codeMirrorConfig: {},
-        onUpdatePanel: () => console.warn('onUpdatePanel not defined'),
+        codeMirrorConfig: {}
     }
 
     static propTypes = {
@@ -39,12 +43,12 @@ class PanelSplit extends Component {
         onUpdatePanel: PropTypes.func
     }
     
-    /** 코드 업데이트 변경 이벤트 핸들러 */
+    /** 에디터 패널 업데이트 변경 이벤트 핸들러 */
     updateCode = (panelName, newCode) => {
-        // console.log( this.codeMirrorEditor.getCodeMirror().doc.getValue() );
+        const { CodeMirrorEditorActions } = this.props;
 
         setTimeout(() => {
-            this.props.onUpdatePanel(panelName, newCode);
+            CodeMirrorEditorActions.setUpdatePanel({panelName, newCode});
         }, 300);
     }
 
@@ -68,4 +72,9 @@ class PanelSplit extends Component {
     }
 }
 
-export default PanelSplit;
+export default connect(
+    null,
+    (dispatch) => ({
+        CodeMirrorEditorActions: bindActionCreators(codeMirrorEditorActions, dispatch)
+    })
+)(PanelSplit);
