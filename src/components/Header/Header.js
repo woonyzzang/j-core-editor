@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { upperFirst } from 'lodash';
 import axios from 'axios';
 import classNames from 'classnames/bind';
-
-import { capitalizeFirstLetter } from '../Utils';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -94,10 +93,10 @@ class Header extends Component {
 
         const { LyPopEditorActions } = this.props;
         const $this = e.currentTarget;
-        const target = capitalizeFirstLetter($this.getAttribute('href'));
+        const target = $this.getAttribute('href');
 
         $this.classList.toggle('active');
-        LyPopEditorActions.toggleEditorSettings(capitalizeFirstLetter(target.replace(/^[#]/g, '')));
+        LyPopEditorActions.toggleEditorSettings(upperFirst(target.split('#')[1]));
         document.querySelector(target).focus();
     }
 
@@ -109,7 +108,7 @@ class Header extends Component {
                 res.data.map((data) => ({
                     author: `${data.author}`,
                     moduleName: `${data.module}`,
-                    moduleVal: `${capitalizeFirstLetter(data.module)} - ${data.version}`
+                    moduleVal: `${upperFirst(data.module)} - ${data.version}`
                 }))
             )
             .then((componentDatas) => {

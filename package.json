@@ -7,6 +7,7 @@
     "classnames": "^2.2.6",
     "codemirror": "^5.41.0",
     "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.11",
     "material-icons": "^0.2.3",
     "open-color": "^1.6.3",
     "prop-types": "^15.6.2",
