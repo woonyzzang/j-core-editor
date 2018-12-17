@@ -59,7 +59,7 @@
                 this.$easing = options.easing;
                 this.$sec = options.seconds;
 
-                this.init();
+                this._init();
                 this.evtListener(options);
             },
 
@@ -129,7 +129,7 @@
             },
 
             /** 초기화 */
-            init: function() {
+            _init: function() {
                 this.$tit.attr({title: '비활성화', role: 'heading', 'aria-expanded': false}); // 접근성관련 타이틀 헤딩태그
                 this.$cont.attr({tabindex: -1, role: 'region', 'aria-hidden': true}); // 접근성관련 콘텐츠 헤딩태그
             },
