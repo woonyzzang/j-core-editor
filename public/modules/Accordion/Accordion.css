@@ -1,0 +1,17 @@
+/* reset */
+html, body, div, ul, li, button{margin:0;padding:0;border:0}
+html{height:100%;display:block;font-size:62.5%;line-height:normal}
+ol, ul{list-style:none}
+body{position:relative;height:100%;min-height:100%;font-size:1.4rem;color:#333}
+
+/* custom style */
+h1{margin:0;padding:20px;font-size:16px;font-weight:bold;color:#fff;background-color:#444f59}
+.btn_wrap{position:absolute;top:16px;right:15px}
+.btn_wrap button{padding:5px;border-radius:4px;font-size:14px;background-color:#d8e9ef}
+
+/* accordion style */
+.ui_accordion_wrap .ui_accordion_tit{display:block;padding:2rem;border-bottom:.1rem solid #3e4149;font-size:1.6rem;color:#3e4149;box-sizing:border-box;border-radius:0;background-color:#fd999a;text-align:left}
+.ui_accordion_wrap a.ui_accordion_tit{text-decoration:none}
+.ui_accordion_wrap button.ui_accordion_tit{width:100%}
+.ui_accordion_wrap .ui_accordion_tit.active{font-weight:bold}
+.ui_accordion_wrap .ui_accordion_cont{display:none;overflow-y:scroll;max-height:15rem;padding:2.5rem 2rem;border-bottom:.1rem solid #3e4149;font-size:1.4rem;color:#3e4149;background-color:#fec8c9}

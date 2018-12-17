@@ -1,0 +1,59 @@
+<h1>Accordion</h1>
+<div class="btn_wrap">
+    <button type="button" id="btnCollapse">Collapse All</button>
+    <button type="button" id="btnExpansion">Expansion All</button>
+</div>
+<!-- accordion -->
+<ul class="ui_accordion_wrap">
+    <li>
+        <a href="#" role="button">Click me</a>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+    </li>
+    <li>
+        <button type="button">Click me</button>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+    </li>
+    <li>
+        <a href="#" role="button">Click me</a>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+    </li>
+    <li>
+        <button type="button">Click me</button>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+    </li>
+</ul>
+<!-- //  accordion -->
+
+<script>
+;(function(global, doc, core, $) {
+    'use strict';
+
+    core.modules(['Accordion'], function(Module) {
+        var Accordion = new Module.accordion({
+            selector: '.ui_accordion_wrap', // 아코디언 틀 선택자
+            title: 'ui_accordion_tit', // 아코디언 타이틀 클래스명
+            content: 'ui_accordion_cont', // 아코디언 콘텐츠 클래스명
+            sliding: true, //아코디언 슬라이딩 효과 유무
+            easing: 'easeOutBounce', // 아코디언 슬라이딩 효과
+            seconds: 600, // 아코디언 슬라이딩 속도
+            multi: true // 아코디언 열고닫힘 멀티 유무
+        });
+
+        $('#btnCollapse').on('click', function() { Accordion.panelCollapse('.ui_accordion_tit', 'all'); }); // 전체접기 ('아코디언 타이틀 클래스', 'all')
+        $('#btnExpansion').on('click', function() { Accordion.panelExpansion('.ui_accordion_tit', 'all'); }); // 전체펼치기 ('아코디언 타이틀 클래스', 'all')
+    });
+})(window, document, UPLEAT, jQuery);
+</script>

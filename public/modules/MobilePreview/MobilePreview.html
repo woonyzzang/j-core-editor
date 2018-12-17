@@ -1,0 +1,24 @@
+<!-- [D] 모바일 프리뷰 -->
+<table id="listmap">
+    <tbody>
+    <tr>
+        <td><a href="http://upleat.com/homepage/" data-role="preview">AC-01-00.html</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- [T] mobilePreview -->
+<script>
+;(function(global, doc, core, $) {
+    'use strict';
+
+    core.asyncImport.load([
+        'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css',
+        'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+    ], function() {
+        core.modules(['MobilePreview'], function(Module) {
+            new Module.mobilePreview({position: 'right', draggable: true, resizable: true});
+        });
+    });
+})(window, document, UPLEAT, jQuery);
+</script>

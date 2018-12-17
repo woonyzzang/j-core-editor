@@ -1,0 +1,36 @@
+<div class="content">
+    <div class="tabWrap">
+        <!-- tab index -->
+        <ul role="tablist" class="tabMenu">
+            <li role="presentation"><a href="#tabCon1" role="tab" aria-selected="true" aria-controls="tabCon1">tab1</a></li>
+            <li role="presentation"><a href="#tabCon2" role="tab" aria-selected="false" aria-controls="tabCon2">tab2</a></li>
+            <li role="presentation"><a href="#tabCon3" role="tab" aria-selected="false" aria-controls="tabCon3">tab3</a></li>
+            <li role="presentation"><a href="#tabCon4" role="tab" aria-selected="false" aria-controls="tabCon4">tab4</a></li>
+        </ul>
+        <!-- //tab index -->
+        <!-- tab contents -->
+        <div role="tabpanel" aria-labelledby="tab1" id="tabCon1" class="tabCon">
+            tab111
+        </div>
+        <div role="tabpanel" aria-labelledby="tab2" id="tabCon2" class="tabCon">
+            tab222
+        </div>
+        <div role="tabpanel" aria-labelledby="tab3" id="tabCon3" class="tabCon">
+            tab333
+        </div>
+        <div role="tabpanel" aria-labelledby="tab4" id="tabCon4" class="tabCon">
+            tab444
+        </div>
+        <!-- //tab contents -->
+    </div>
+</div>
+
+<script>
+;(function(global, doc, core, $) {
+    'use strict';
+
+    core.modules(['TabMenu'], function(Module) {
+        var tabMenu = new Module.tabMenu();
+    });
+})(window, document, UPLEAT, jQuery);
+</script>

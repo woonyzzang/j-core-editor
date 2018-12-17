@@ -1,0 +1,15 @@
+<h1>module-mobileDevice</h1>
+
+<script>
+;(function(global, doc, core, $) {
+    'use strict';
+
+    core.modules(['MobileDeviceInfo'], function(Module) {
+        new Module.mobileDeviceName();
+        new Module.mobileDeviceVersion();
+
+        // new Module.mobileDeviceName({dataKeyName: 'data-device'});
+        // new Module.mobileDeviceVersion({dataKeyName: 'data-device-ver'});
+    });
+})(window, document, UPLEAT, jQuery);
+</script>

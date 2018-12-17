@@ -1,0 +1,11 @@
+/* [D] 디바이스 종류 분기 처리 */
+[data-device-name=i] h1{border:10px solid #55a532}
+[data-device-name=a] h1{border:10px solid #950B02}
+
+/* [D] 디바이스 major 버전 분기 처리 */
+[data-device-name=i][data-device-version^='10'] h1{background-color:#5f3f3f}
+[data-device-name=a][data-device-version^='4'] h1{background-color:#1d3e81}
+
+/* [D] 디바이스 build 버전 분기 처리 */
+[data-device-name=i][data-device-version='10.3.1'] h1{color:#8da6ce}
+[data-device-name=a][data-device-version='4.4.2'] h1{color:#fff}

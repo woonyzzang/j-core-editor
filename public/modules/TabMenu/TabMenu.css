@@ -1,0 +1,11 @@
+*{margin:0;padding:0;color:#333}
+.content{margin:20px;width:800px}
+
+.tabWrap{width:100%}
+.tabMenu{}
+.tabMenu:after{display:block;clear:both;content:''}
+.tabMenu li{float:left;list-style:none}
+.tabMenu li + li{margin:0 0 0 5px}
+.tabMenu li a{display:block;padding:10px 50px;background:#337ab7;color:#fff;text-decoration:none;text-align:center}
+.tabMenu li a[aria-selected=true]{background:#e7edf2;color:#333;font-weight:bold}
+.tabCon{padding:20px;background:#e7edf2}
