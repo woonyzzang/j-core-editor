@@ -3,8 +3,9 @@
     <button type="button" id="btnCollapse">Collapse All</button>
     <button type="button" id="btnExpansion">Expansion All</button>
 </div>
+
 <!-- accordion -->
-<ul class="ui_accordion_wrap">
+<ul class="accordion_area ui_accordion_area">
     <li>
         <a href="#" role="button">Click me</a>
         <div>
@@ -43,13 +44,13 @@
 
     core.modules(['Accordion'], function(Module) {
         var Accordion = new Module.accordion({
-            selector: '.ui_accordion_wrap', // 아코디언 틀 선택자
-            title: 'ui_accordion_tit', // 아코디언 타이틀 클래스명
-            content: 'ui_accordion_cont', // 아코디언 콘텐츠 클래스명
-            sliding: true, //아코디언 슬라이딩 효과 유무
-            easing: 'easeOutBounce', // 아코디언 슬라이딩 효과
-            seconds: 600, // 아코디언 슬라이딩 속도
-            multi: true // 아코디언 열고닫힘 멀티 유무
+            selector: '.ui_accordion_area', // 아코디언 틀 선택자 (선택옵션)
+            title: 'accordion_tit', // 아코디언 타이틀 클래스명 (선택옵션)
+            content: 'accordion_cont', // 아코디언 콘텐츠 클래스명 (선택옵션)
+            sliding: true, //아코디언 슬라이딩 효과 유무 (선택옵션)
+            easing: 'easeOutBounce', // 아코디언 슬라이딩 효과 (선택옵션)
+            seconds: 600, // 아코디언 슬라이딩 속도 (선택옵션)
+            multi: true // 아코디언 열고닫힘 멀티 유무 (선택옵션)
         });
 
         $('#btnCollapse').on('click', function() { Accordion.panelCollapse('.ui_accordion_tit', 'all'); }); // 전체접기 ('아코디언 타이틀 클래스', 'all')

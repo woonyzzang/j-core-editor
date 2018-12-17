@@ -1,17 +1,39 @@
-/* reset */
-html, body, div, ul, li, button{margin:0;padding:0;border:0}
-html{height:100%;display:block;font-size:62.5%;line-height:normal}
-ol, ul{list-style:none}
-body{position:relative;height:100%;min-height:100%;font-size:1.4rem;color:#333}
+@charset "utf-8";
+/* <UPLEAT> UI Dev Team JYS 181115 */
 
-/* custom style */
-h1{margin:0;padding:20px;font-size:16px;font-weight:bold;color:#fff;background-color:#444f59}
+/* =Reset */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0}
+body,h1,h2,h3,h4,h5,h6,select,input,textarea,button{font-family:Dotum,'돋움',Helvetica,'Apple SD Gothic Neo',sans-serif}
+body{/*-webkit-text-size-adjust:none;*/font-size:14px;color:#222;word-break:break-all}
+input,select,textarea,button{font-size:14px;vertical-align:top}
+button,input,textarea{-webkit-border-radius:0;border-radius:0}
+button{background-color:transparent;cursor:pointer}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+table{table-layout:fixed;width:100%;border-collapse:collapse;border-spacing:0}
+ol,ul{list-style:none}
+em,address{font-style:normal}
+img,fieldset,iframe{border:0}
+img{max-width:100%;height:auto;vertical-align:top}
+a{color:#333;text-decoration:none}
+area{outline:0}
+input::-ms-clear{display:none}
+input[type=date]::-webkit-inner-spin-button{display:none}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-calendar-picker-indicator{display:none}
+input[type=number]{-moz-appearance:textfield}
+select{border-radius:0}
+
+/** Custom Style */
+h1{padding:20px;font-size:16px;font-weight:bold;color:#fff;background-color:#444f59}
 .btn_wrap{position:absolute;top:16px;right:15px}
-.btn_wrap button{padding:5px;border-radius:4px;font-size:14px;background-color:#d8e9ef}
+.btn_wrap button[type=button]{padding:5px;border-radius:4px;font-size:14px;border:0;background-color:#d8e9ef}
 
-/* accordion style */
-.ui_accordion_wrap .ui_accordion_tit{display:block;padding:2rem;border-bottom:.1rem solid #3e4149;font-size:1.6rem;color:#3e4149;box-sizing:border-box;border-radius:0;background-color:#fd999a;text-align:left}
-.ui_accordion_wrap a.ui_accordion_tit{text-decoration:none}
-.ui_accordion_wrap button.ui_accordion_tit{width:100%}
-.ui_accordion_wrap .ui_accordion_tit.active{font-weight:bold}
-.ui_accordion_wrap .ui_accordion_cont{display:none;overflow-y:scroll;max-height:15rem;padding:2.5rem 2rem;border-bottom:.1rem solid #3e4149;font-size:1.4rem;color:#3e4149;background-color:#fec8c9}
+/* =Accordion Area */
+.accordion_area{}
+.accordion_area>li,
+.accordion_area>div{margin-top:-1px;border:1px solid #3e4149;border-width:1px 0}
+.accordion_area>li:first-child,
+.accordion_area>div:first-child{border-top:0}
+.accordion_area .accordion_tit{display:block;width:100%;padding:20px;border-radius:0;border:0;background-color:#fd999a;font-size:16px;color:#3e4149;text-align:left;box-sizing:border-box;}
+.accordion_area .accordion_tit.active{font-weight:bold}
+.accordion_area .accordion_cont{display:none;overflow-y:auto;max-height:200px;padding:10px;border-top:1px solid #3e4149;background-color:#fec8c9}
