@@ -4,9 +4,18 @@
  * @description 아코디언
  * @author Cho Yeon Seung
  * @email irene@upleat.com
- * @creat 2018.11.15
+ * @create 2018.11.15
  * @version v1.0.0
  * @licence CC
+ *
+ * @param {Object} options - 옵션 (optional)
+ * @param {String} Object.selector: 아코디언틀 선택자 (default - '.ui_accordion_area')
+ * @param {String} Object.title: 아코디언 타이틀 클래스명 (default - 'accordion_tit')
+ * @param {String} Object.content: 아코디언 콘텐츠 클래스명  (default - 'accordion_cont')
+ * @param {Boolean} Object.sliding: 아코디언 슬라이딩 효과 유무 (default - false)
+ * @param {String} Object.easing: 아코디언 슬라이딩 효과  (default - 'swing')
+ * @param {String} Object.seconds: 아코디언 슬라이딩 속도  (default - '400')
+ * @param {Boolean} Object.multi: 아코디언 열고닫힘 멀티유무 (default - true)
  *
  * @example
  * // HTML 구조
@@ -23,16 +32,6 @@
 
     core.module.Accordion = function(app) {
         app.accordion = core.Class({
-            /**
-             * @param {Object} options - 옵션 (optional)
-             * @param {String} Object.selector: 아코디언틀 선택자 (default - '.ui_accordion_area')
-             * @param {String} Object.title: 아코디언 타이틀 클래스명 (default - 'accordion_tit')
-             * @param {String} Object.content: 아코디언 콘텐츠 클래스명  (default - 'accordion_cont')
-             * @param {Boolean} Object.sliding: 아코디언 슬라이딩 효과 유무 (default - false)
-             * @param {String} Object.easing: 아코디언 슬라이딩 효과  (default - 'swing')
-             * @param {String} Object.seconds: 아코디언 슬라이딩 속도  (default - '400')
-             * @param {Boolean} Object.multi: 아코디언 열고닫힘 멀티유무 (default - true)
-             */
             __constructor: function(options) {
                 var defaults = {
                     selector: '.ui_accordion_area', // 아코디언 틀 선택자

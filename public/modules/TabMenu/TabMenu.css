@@ -1,11 +1,31 @@
-*{margin:0;padding:0;color:#333}
-.content{margin:20px;width:800px}
+/* =Reset */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0}
+body,h1,h2,h3,h4,h5,h6,select,input,textarea,button{font-family:Dotum,'돋움',Helvetica,'Apple SD Gothic Neo',sans-serif}
+body{/*-webkit-text-size-adjust:none;*/font-size:14px;color:#222;word-break:break-all}
+input,select,textarea,button{font-size:14px;vertical-align:top}
+button,input,textarea{-webkit-border-radius:0;border-radius:0}
+button{background-color:transparent;cursor:pointer}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+table{table-layout:fixed;width:100%;border-collapse:collapse;border-spacing:0}
+ol,ul{list-style:none}
+em,address{font-style:normal}
+img,fieldset,iframe{border:0}
+img{max-width:100%;height:auto;vertical-align:top}
+a{color:#333;text-decoration:none}
+area{outline:0}
+input::-ms-clear{display:none}
+input[type=date]::-webkit-inner-spin-button{display:none}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-calendar-picker-indicator{display:none}
+input[type=number]{-moz-appearance:textfield}
+select{border-radius:0}
 
-.tabWrap{width:100%}
-.tabMenu{}
-.tabMenu:after{display:block;clear:both;content:''}
-.tabMenu li{float:left;list-style:none}
-.tabMenu li + li{margin:0 0 0 5px}
-.tabMenu li a{display:block;padding:10px 50px;background:#337ab7;color:#fff;text-decoration:none;text-align:center}
-.tabMenu li a[aria-selected=true]{background:#e7edf2;color:#333;font-weight:bold}
-.tabCon{padding:20px;background:#e7edf2}
+/* =Tab Area */
+.tab_area{width:100%}
+.tab_area .tab_menu{}
+.tab_area .tab_menu:after{display:table;content:'';clear:both}
+.tab_area .tab_menu li{float:left;margin-left: 4px}
+.tab_area .tab_menu li:first-child{margin-left:0}
+.tab_area .tab_menu a{display:block;padding:10px 50px;background-color:#337ab7;color:#fff;text-align:center}
+.tab_area .tab_menu a[aria-selected=true]{background-color:#e7edf2;font-weight:bold;color:#333}
+.tab_area .tab_cont{padding:20px;background-color:#e7edf2}

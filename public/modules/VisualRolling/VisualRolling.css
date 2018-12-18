@@ -1,1 +1,3 @@
-#rollingWrapper {width:800px;margin:20px 0;height:500px;}
+/* =Rolling Banner Area */
+.rolling_banner_area{}
+.rolling_banner_area .rolling_banner_group{width:800px;height:500px;margin:20px 0}

@@ -3,8 +3,10 @@
  * @module MobileDeviceInfo
  * @description 모바일 디바이스 정보
  * @author Joe Seung Woon
- * @creat 2018.11.09
+ * @email seungwoon@upleat.com
+ * @create 2018.11.09
  * @version v1.0.0
+ * @licence CC
  *
  * @class mobileDeviceName
  * @description 모바일 디바이스 체크 후 body 요소에 커스텀 데이터 어트리뷰트로 디바이스명 삽입
@@ -65,7 +67,10 @@
     'use strict';
 
     core.module.MobileDeviceInfo = function(app) {
-        /** 모바일 디바이스명 체크 */
+        /**
+         * @class mobileDeviceName
+         * @description 모바일 디바이스명 체크
+         */
         app.mobileDeviceName = core.Class({
             __constructor: function(options) {
                 var defaults = {
@@ -79,6 +84,7 @@
                 this._init(options);
             },
 
+            /** 초기화 */
             _init: function(options) {
                 if (!core.browser.isMobile) { return false; }
 
@@ -92,7 +98,10 @@
             }
         });
 
-        /** 모바일 디바이스 버전 체크 */
+        /**
+         * @class mobileDeviceName
+         * @description 모바일 디바이스 버전 체크
+         */
         app.mobileDeviceVersion = core.Class({
             __constructor: function(options) {
                 var defaults = {
@@ -106,6 +115,7 @@
                 this._init(options);
             },
 
+            /** 초기화 */
             _init: function(options) {
                 if (!core.browser.isMobile) { return false; }
 

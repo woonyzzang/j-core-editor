@@ -3,8 +3,10 @@
  * @module MobilePreview
  * @description 마크업 리스트맵 모바일 프리뷰
  * @author Joe Seung Woon
- * @creat 2018.07.24
+ * @email seungwoon@upleat.com
+ * @create 2018.07.24
  * @version v1.0.0
+ * @licence CC
  *
  * @param {Object} | 옵션 (optional)
  * @param {String} | Object.selector: 리스트맵 ID명 (default - '#listmap')

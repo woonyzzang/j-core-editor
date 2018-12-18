@@ -3,168 +3,209 @@
  * @module VisualRolling
  * @description 롤링 스크립트 제작
  * @author 노영일
- * @creat 2018.11.15
+ * @email dol_brain@upleat.com
+ * @create 2018.12.18
  * @version v1.0.0
+ * @licence CC
  *
- * @param {String} | {최상위 틀 선택자} (wrapper) - (default - '#rollingWrapper')
- * @param {String} | {배너를 감싼 선택자} (bannerWrap) - (default - '#rolling')
+ * @param {String} | {최상위 틀 선택자} (selector) - (default - '.ui_rolling_banner_area')
+ * @param {String} | {bannerWrap의 틀 선택자} (bannerArea) - (default - '.rolling_banner_group')
+ * @param {String} | {배너를 감싼 선택자} (bannerWrap) - (default - '.rolling_banner')
  * @param {String} | {실제 보이는 배너 선택자} (bannerEach) - (default - '.banner')
- * @param {String} | {실행 버튼 선택자} (playBtn) - (default - '.rollingPlay')
- * @param {String} | {정지 버튼 선택자} (stopBtn) - (default - '.rollingStop')
- * @param {String} | {왼쪽으로 슬라이드 버튼 선택자} (leftBtn) - (default - '.left')
- * @param {String} | {오른쪽으로 슬라이드 버튼 선택자} (rightBtn) - (default - '.right')
- * @param {Int} | {슬라이드 이동속도} (rollingSpeed) - (default - 1000)
- * @param {Int} | {슬라이드 정지시간(표출시간)} (rollingTime) - (default - 1500)
- * @param {Int} | {슬라이드 진행방향 1일 경우 오른쪽>왼쪽, 2일 경우 오른쪽<왼쪽} (rollingPos) - (default - 1)
+ * @param {String} | {실행 버튼 선택자} (playBtn) - (default - '.ui_rolling_play')
+ * @param {String} | {정지 버튼 선택자} (stopBtn) - (default - '.ui_rolling_stop')
+ * @param {String} | {이전으로 슬라이드 버튼 선택자} (nextBtn) - (default - '.ui_rolling_prev')
+ * @param {String} | {다음으로 슬라이드 버튼 선택자} (prevBtn) - (default - '.ui_rolling_next')
+ * @param {Number} | {슬라이드 이동속도} (SPEED) - (default - 500)
+ * @param {Number} | {슬라이드 정지시간(표출시간)} (TIMER) - (default - 1500)
+ * @param {String} | {슬라이드 진행방향 'left'일 경우 다음, 'right'일 경우 이전} (direction) - (default - 'left')
  *
  * @example
- * <div id="rollingWrapper">
- *      <div id="rolling">
- *          <div class="banner">1</div>
- *          <div class="banner">2</div>
- *          <div class="banner">3</div>
- *          <div class="banner">4</div>
- *          <div class="banner">5</div>
- *          <div class="banner">6</div>
- *      </div
- *  </div>
+ * <div class="rolling_banner_area ui_rolling_banner_area">
+ *     <div class="rolling_banner_group">
+ *         <div class="rolling_banner">
+ *         <div class="banner" style="background-color:red;">1</div>
+ *         <div class="banner" style="background-color:yellow;">2</div>
+ *         <div class="banner" style="background-color:green;">3</div>
+ *         <div class="banner" style="background-color:red;">4</div>
+ *         <div class="banner" style="background-color:aqua;">5</div>
+ *         <div class="banner" style="background-color:silver;">6</div>
+ *     </div>
+ *     <div class="rolling_banner_btns">
+ *         <button type="button" class="ui_rolling_stop">정지</button>
+ *         <button type="button" class="ui_rolling_play">실행</button>
+ *         <button type="button" class="ui_rolling_next">다음으로 슬라이드</button>
+ *         <button type="button" class="ui_rolling_prev">이전으로 슬라이드</button>
+ *     </div>
+ * </div>
  */
 
-;(function(global, doc, core, $, _) {
+; (function (global, doc, core, $, _) {
     'use strict';
 
-    core.module.VisualRolling = function(app) {
+    core.module.VisualRolling = function (app) {
         app.visualRolling = core.Class({
-            __constructor: function(options) {
-                var _this = this;
+            __constructor: function (options) {
                 var defaults = {
-                    wrapper: '#rollingWrapper', // 최상위 틀 id
-                    bannerWrap: '#rolling', // 배너를 감싼 id
+                    selector: '.ui_rolling_banner_area', // 최상위 틀 class
+                    bannerArea: '.rolling_banner_group', // bannerWrap의 틀 class
+                    bannerWrap: '.rolling_banner', // 배너를 감싼 class
                     bannerEach: '.banner', // 실제 보이는 배너 class
-                    playBtn: '.rollingPlay', // 실행 버튼 class
-                    stopBtn: '.rollingStop', // 정지 버튼 class
-                    leftBtn: '.left', // 왼쪽으로 슬라이드 버튼 class
-                    rightBtn: '.right', // 오른쪽으로 슬라이드 버튼 class
-                    rollingSpeed: 1000, // 슬라이드 이동속도
-                    rollingTime: 1500, // 슬라이드 정지시간(표출시간)
-                    rollingPos: 1, // 롤링 진행방향 1일 경우 오른쪽>왼쪽, 2일 경우 오른쪽<왼쪽
-                    // js에서만 필요한 영역
-                    rollingNow: 1, // 슬라이드 위치
-                    rollingSet: false // 자동 롤링체크 true일 경우 진행중
+                    playBtn: '.ui_rolling_play', // 실행 버튼 class
+                    stopBtn: '.ui_rolling_stop', // 정지 버튼 class
+                    prevBtn: '.ui_rolling_prev', // 이전으로 슬라이드 버튼 class
+                    nextBtn: '.ui_rolling_next', // 다음으로 슬라이드 버튼 class
+                    SPEED: 500, // 슬라이드 이동속도
+                    TIMER: 1500, // 슬라이드 정지시간(표출시간)
+                    direction: 'left' // 롤링 진행방향 'left'일 경우 오른쪽>왼쪽, 'right'일 경우 오른쪽<왼쪽
                 };
+
                 options = _.extend(defaults, options);
 
-                this.init(options,_this);
+                this.$selector = $(options.selector);
+                this.$bannerArea = this.$selector.children(options.bannerArea);
+                this.$rollingBanner = this.$bannerArea.children(options.bannerWrap);
+                this.$banners = this.$rollingBanner.children(options.bannerEach);
+                this.rollingNow = 1;
+                this.rollingSet = false;
+
+                this._init();
+                this.evtListener(options, this);
             },
 
-            // 테스트를 위한 함수
-            test: function(options) {
-                console.log(options.rollingNow + "||");
+            /**
+             * @method test
+             * @description 테스트를 위한 함수
+             * @param {Object} options - 옵션
+             * @param {Object} _this - visualRolling 클래스
+             */
+            test: function (options, _this) {
+                console.log(_this.rollingNow + '||');
             },
 
-            init: function(options,_this) {
-                _this.setting(options,_this);
-                _this.evtListener(options,_this);
-            },
-
-            rolling: function(options,_this) {
-                if(options.rollingPos == 1){
-                    $(options.bannerWrap).animate({
-                        left: -($(options.bannerWrap).width() / $(options.bannerEach).length) * ++options.rollingNow
-                    },options.rollingSpeed,function(){
-                        if(options.rollingNow >= $(options.bannerEach).length-1){
-                            options.rollingNow = 1
-                            $(options.bannerWrap).css('left', '-'+$(options.wrapper).css('width'));
+            /**
+             * @method rolling
+             * @description 배너의 롤링을 위한 함수
+             * @param {Object} options - 옵션
+             * @param {Object} _this - visualRolling 클래스
+             */
+            rolling: function (options, _this) {
+                if (options.direction === 'left') {
+                    this.$rollingBanner.animate({
+                        left: -(this.$rollingBanner.width() / this.$rollingBanner.children().length) * ++_this.rollingNow
+                    }, options.SPEED, function () {
+                        if (_this.rollingNow >= _this.$rollingBanner.children().length - 1) {
+                            _this.rollingNow = 1;
+                            _this.$rollingBanner.css('left', '-' + _this.$bannerArea.css('width'));
                         }
                     });
-                } else if(options.rollingPos == 2) {
-                    $(options.bannerWrap).animate({
-                        left: -($(options.bannerWrap).width() / $(options.bannerEach).length) * --options.rollingNow
-                    },options.rollingSpeed,function(){
-                        if(options.rollingNow <= 0){
-                            options.rollingNow = $(options.bannerEach).length-2
-                            $(options.bannerWrap).css( 'left', '-'+($(options.wrapper).width()*($(options.bannerEach).length-2))+'px' );
+                } else if (options.direction === 'right') {
+                    this.$rollingBanner.animate({
+                        left: -(this.$rollingBanner.width() / this.$rollingBanner.children().length) * --_this.rollingNow
+                    }, options.SPEED, function () {
+                        if (_this.rollingNow <= 0) {
+                            _this.rollingNow = _this.$rollingBanner.children().length - 2;
+                            _this.$rollingBanner.css('left', '-' + (_this.$bannerArea.width() * (_this.$rollingBanner.children().length - 2)) + 'px');
                         }
                     });
                 }
             },
 
-            evtListener: function(options,_this) {
+            /**
+             * @method setting
+             * @description CSS 초기화 세팅
+             */
+            setting: function () {
+                var $firstBanner = null,
+                    $lastBanner = null;
+
+                // 배너 관련 CSS 초기화
+                this.$bannerArea.css({overflow: 'hidden', position: 'relative'});
+                this.$banners.css({float: 'left', width: this.$bannerArea.css('width'), height: this.$bannerArea.css('height')});
+
+                $firstBanner = this.$banners.eq(0).clone();
+                $lastBanner = this.$banners.eq(this.$banners.length - 1).clone();
+
+                this.$rollingBanner
+                    .append($firstBanner)
+                    .prepend($lastBanner)
+                    .css({
+                        overflow: 'hidden',
+                        position: 'absolute',
+                        left: '-' + this.$bannerArea.css('width'),
+                        width: (this.$rollingBanner.children().length * 100) + '%'
+                    });
+            },
+
+            /** 초기화 */
+            _init: function () {
+                this.setting();
+            },
+
+            /** 이벤트 핸들러 */
+            evtListener: function (options, _this) {
                 var _rolling;
-                $(options.playBtn).click(function(event) {
-                    if(!$(options.bannerWrap).is(":animated") && !options.rollingSet){
-                        rolling();
+
+                function rolling() {
+                    _this.rollingSet = true;
+
+                    _rolling = setInterval(function() {
+                        _this.rolling(options, _this);
+                    }, options.TIMER);
+                }
+
+                function rollingEach(direction) {
+                    if (!(options.direction === direction)) {
+                        var cur_direction = options.direction;
+
+                        options.direction = direction;
+
+                        _this.rolling(options, _this);
+
+                        options.direction = cur_direction;
+                    } else {
+                        _this.rolling(options, _this);
                     }
+                }
+
+                $(options.playBtn).on('click', function() {
+                    if (!$(options.bannerWrap).is(':animated') && !_this.rollingSet) { rolling(); }
                 });
-                $(options.stopBtn).click(function(event) {
-                    options.rollingSet = false;
+
+                $(options.stopBtn).on('click', function() {
+                    _this.rollingSet = false;
+
                     clearInterval(_rolling);
                 });
-                $(options.leftBtn).click(function(event) {
-                    if(!$(options.bannerWrap).is(":animated")){
-                        rollingEach(1);
-                    } else if(options.rollingSet){
+
+                $(options.nextBtn).on('click', function() {
+                    if (!$(options.bannerWrap).is(':animated')) {
+                        rollingEach('left');
+                    } else if (_this.rollingSet) {
                         clearInterval(_rolling);
-                        setTimeout(function(){
-                            if(!$(options.bannerWrap).is(":animated")){
-                                rollingEach(1);
-                                setTimeout(rolling(),(options.rollingTime+options.rollingSpeed));
+
+                        setTimeout(function () {
+                            if (!$(options.bannerWrap).is(':animated')) {
+                                rollingEach('left');
+                                setTimeout(rolling(), (options.TIMER + options.SPEED));
                             }
-                        },options.rollingSpeed)
-                    }
-                });
-                $(options.rightBtn).click(function(event) {
-                    if(!$(options.bannerWrap).is(":animated")){
-                        rollingEach(2);
-                    } else if(options.rollingSet){
-                        clearInterval(_rolling);
-                        setTimeout(function(){
-                            if(!$(options.bannerWrap).is(":animated")){
-                                rollingEach(2);
-                                setTimeout(rolling(),(options.rollingTime+options.rollingSpeed));
-                            }
-                        },options.rollingSpeed)
+                        }, options.SPEED);
                     }
                 });
 
-                function rolling(){
-                    options.rollingSet = true;
-                    _rolling = setInterval(function(){
-                        _this.rolling(options,_this);
-                    },options.rollingTime);
-                }
+                $(options.prevBtn).on('click', function() {
+                    if (!$(options.bannerWrap).is(':animated')) {
+                        rollingEach('right');
+                    } else if (_this.rollingSet) {
+                        clearInterval(_rolling);
 
-                function rollingEach(pos){
-                    if( !(options.rollingPos == pos) ){
-                        var cur_pos = options.rollingPos;
-                        options.rollingPos = pos;
-                        _this.rolling(options,_this);
-                        options.rollingPos = cur_pos;
-                    } else {_this.rolling(options,_this);}
-                }
-            },
-
-            setting: function(options,_this) {
-                // 배너 관련 CSS 초기화
-                var _banner_first = $(options.bannerEach).eq(0).clone();
-                var _banner_last = $(options.bannerEach).eq($(options.bannerEach).length-1).clone();
-                $(options.bannerWrap).append(_banner_first);
-                $(options.bannerWrap).prepend(_banner_last);
-                $(options.bannerWrap).css('width', ($(options.bannerEach).length * 100)+'%');
-                $(options.bannerWrap).css({
-                    'position' : 'absolute',
-                    'left' : '-' + $(options.wrapper).css('width'),
-                    'overflow' : 'hidden'
-                });
-                $(options.bannerEach).css({
-                    'display' : 'inline-block',
-                    'width' : $(options.wrapper).css('width'),
-                    'height' : $(options.wrapper).css('height'),
-                    'float' : 'left'
-                });
-                $(options.wrapper).css({
-                    'overflow' : 'hidden',
-                    'position' : 'relative'
+                        setTimeout(function () {
+                            if (!$(options.bannerWrap).is(':animated')) {
+                                rollingEach('right');
+                                setTimeout(rolling(), (options.TIMER + options.SPEED));
+                            }
+                        }, options.SPEED);
+                    }
                 });
             }
         });

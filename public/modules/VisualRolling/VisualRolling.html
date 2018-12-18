@@ -1,38 +1,40 @@
-<div id="rollingWrapper">
-	<div id="rolling">
-		<div class="banner" style="background-color:red;">1</div>
-		<div class="banner" style="background-color:yellow;">2</div>
-		<div class="banner" style="background-color:green;">3</div>
-		<div class="banner" style="background-color:red;">4</div>
-		<div class="banner" style="background-color:aqua;">5</div>
-		<div class="banner" style="background-color:silver;">6</div>
+<div class="rolling_banner_area ui_rolling_banner_area">
+	<div class="rolling_banner_group">
+		<div class="rolling_banner">
+			<div class="banner" style="background-color:red;">1</div>
+			<div class="banner" style="background-color:yellow;">2</div>
+			<div class="banner" style="background-color:green;">3</div>
+			<div class="banner" style="background-color:red;">4</div>
+			<div class="banner" style="background-color:aqua;">5</div>
+			<div class="banner" style="background-color:silver;">6</div>
+		</div>
 	</div>
-</div>
-<div id="btnWrapper">
-	<button class="rollingStop">정지</button>
-	<button class="rollingPlay">실행</button>
-	<button class="left">왼쪽으로 슬라이드</button>
-	<button class="right">오른쪽으로 슬라이드</button>
+	<div class="rolling_banner_btns">
+		<button type="button" class="ui_rolling_stop">정지</button>
+		<button type="button" class="ui_rolling_play">실행</button>
+		<button type="button" class="ui_rolling_next">다음으로 슬라이드</button>
+		<button type="button" class="ui_rolling_prev">이전으로 슬라이드</button>
+	</div>
 </div>
 
 <script>
-;(function(global, doc, core, $) {
-	'use strict';
+;(function (global, doc, core, $) {
+	core.modules(['VisualRolling'], function (Module) {
+		// var visualRolling = new Module.visualRolling();
 
-	core.modules(['VisualRolling'], function(Module) {
-		var VisualRolling = new Module.visualRolling();
-		/*var VisualRolling = new Module.visualRolling({
-			wrapper: '#rollingWrapper', // 최상위 틀 id
-			bannerWrap: '#rolling', // 배너를 감싼 id
+		var visualRolling = new Module.visualRolling({
+			selector: '.ui_rolling_banner_area', // 최상위 틀 class
+			bannerArea: '.rolling_banner_group', // bannerWrap의 틀 class
+			bannerWrap: '.rolling_banner', // 배너를 감싼 class
 			bannerEach: '.banner', // 실제 보이는 배너 class
-			playBtn: '.rollingPlay', // 실행 버튼 class
-			stopBtn: '.rollingStop', // 정지 버튼 class
-			leftBtn: '.left', // 왼쪽으로 슬라이드 버튼 class
-			rightBtn: '.right', // 오른쪽으로 슬라이드 버튼 class
-			rollingSpeed: 1000, // 슬라이드 이동속도
-			rollingTime: 1500, // 슬라이드 정지시간(표출시간)
-			rollingPos: 1, // 롤링 진행방향 1일 경우 오른쪽>왼쪽, 2일 경우 오른쪽<왼쪽
-		});*/
+			playBtn: '.ui_rolling_play', // 실행 버튼 class
+			stopBtn: '.ui_rolling_stop', // 정지 버튼 class
+			prevBtn: '.ui_rolling_prev', // 이전으로 슬라이드 버튼 class
+			nextBtn: '.ui_rolling_next', // 다음으로 슬라이드 버튼 class
+			SPEED: 500, // 슬라이드 이동속도
+			TIMER: 1500, // 슬라이드 정지시간(표출시간)
+			direction: 'left' // 롤링 진행방향 'left'일 경우 오른쪽>왼쪽, 'right'일 경우 오른쪽<왼쪽
+		});
 	});
 })(window, document, UPLEAT, jQuery);
 </script>
