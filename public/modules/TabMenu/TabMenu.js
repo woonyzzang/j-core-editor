@@ -96,6 +96,7 @@
                             _that.$firstPanel.show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
                         }
                     }
+
                     // 왼쪽 방향키 또는 위쪽 방향키
                     if (keycode === 37 || keycode === 38) {
                         e.preventDefault();

@@ -10,10 +10,10 @@
 		</div>
 	</div>
 	<div class="rolling_banner_btns">
-		<button type="button" class="ui_rolling_stop">정지</button>
-		<button type="button" class="ui_rolling_play">실행</button>
-		<button type="button" class="ui_rolling_next">다음으로 슬라이드</button>
-		<button type="button" class="ui_rolling_prev">이전으로 슬라이드</button>
+		<button type="button" class="ui_rolling_stop">STOP</button>
+		<button type="button" class="ui_rolling_play">PLAY</button>
+		<button type="button" class="ui_rolling_prev">PREV</button>
+		<button type="button" class="ui_rolling_next">NEXT</button>
 	</div>
 </div>
 
@@ -33,7 +33,7 @@
 			nextBtn: '.ui_rolling_next', // 다음으로 슬라이드 버튼 class
 			SPEED: 500, // 슬라이드 이동속도
 			TIMER: 1500, // 슬라이드 정지시간(표출시간)
-			direction: 'left' // 롤링 진행방향 'left'일 경우 오른쪽>왼쪽, 'right'일 경우 오른쪽<왼쪽
+			direction: 'left' // 롤링 진행방향 'left' or 'right'
 		});
 	});
 })(window, document, UPLEAT, jQuery);

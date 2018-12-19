@@ -1,3 +1,27 @@
+/* =Reset */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0}
+body,h1,h2,h3,h4,h5,h6,select,input,textarea,button{font-family:Dotum,'돋움',Helvetica,'Apple SD Gothic Neo',sans-serif}
+body{/*-webkit-text-size-adjust:none;*/font-size:14px;color:#222;word-break:break-all}
+input,select,textarea,button{font-size:14px;vertical-align:top}
+button,input,textarea{-webkit-border-radius:0;border-radius:0}
+button{background-color:transparent;cursor:pointer}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+table{table-layout:fixed;width:100%;border-collapse:collapse;border-spacing:0}
+ol,ul{list-style:none}
+em,address{font-style:normal}
+img,fieldset,iframe{border:0}
+img{max-width:100%;height:auto;vertical-align:top}
+a{color:#333;text-decoration:none}
+area{outline:0}
+input::-ms-clear{display:none}
+input[type=date]::-webkit-inner-spin-button{display:none}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-calendar-picker-indicator{display:none}
+input[type=number]{-moz-appearance:textfield}
+select{border-radius:0}
+
 /* =Rolling Banner Area */
 .rolling_banner_area{}
-.rolling_banner_area .rolling_banner_group{width:800px;height:500px;margin:20px 0}
+.rolling_banner_area .rolling_banner_group{width:400px;height:200px}
+.rolling_banner_area .rolling_banner_btns{margin-top:10px}
+.rolling_banner_area .rolling_banner_btns>button[type=button]{border:1px solid}

@@ -26,6 +26,6 @@ select{border-radius:0}
 .tab_area .tab_menu:after{display:table;content:'';clear:both}
 .tab_area .tab_menu li{float:left;margin-left: 4px}
 .tab_area .tab_menu li:first-child{margin-left:0}
-.tab_area .tab_menu a{display:block;padding:10px 50px;background-color:#337ab7;color:#fff;text-align:center}
+.tab_area .tab_menu a{display:block;padding:10px 24px;background-color:#337ab7;color:#fff;text-align:center}
 .tab_area .tab_menu a[aria-selected=true]{background-color:#e7edf2;font-weight:bold;color:#333}
 .tab_area .tab_cont{padding:20px;background-color:#e7edf2}
