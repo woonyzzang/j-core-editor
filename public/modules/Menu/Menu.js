@@ -15,8 +15,8 @@
 ;(function(global, doc, core, $, _) {
     'use strict';
 
-    core.module.MobileSidePanelMenu = function(app) {
-        app.mobileSidePanelMenu = core.Class({
+    core.module.Menu = function(app) {
+        app.menu = core.Class({
             __constructor: function() {
                 this._init();
                 this.evtListener();

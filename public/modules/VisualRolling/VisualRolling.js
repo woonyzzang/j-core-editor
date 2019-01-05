@@ -40,12 +40,12 @@
  * </div>
  */
 
-; (function (global, doc, core, $, _) {
+; (function(global, doc, core, $, _) {
     'use strict';
 
-    core.module.VisualRolling = function (app) {
+    core.module.VisualRolling = function(app) {
         app.visualRolling = core.Class({
-            __constructor: function (options) {
+            __constructor: function(options) {
                 var defaults = {
                     selector: '.ui_rolling_banner_area', // 최상위 틀 class
                     bannerArea: '.rolling_banner_group', // bannerWrap의 틀 class
@@ -79,7 +79,7 @@
              * @param {Object} options - 옵션
              * @param {Object} _this - visualRolling 클래스
              */
-            test: function (options, _this) {
+            test: function(options, _this) {
                 console.log(_this.rollingNow + '||');
             },
 
@@ -89,11 +89,11 @@
              * @param {Object} options - 옵션
              * @param {Object} _this - visualRolling 클래스
              */
-            rolling: function (options, _this) {
+            rolling: function(options, _this) {
                 if (options.direction === 'left') {
                     this.$rollingBanner.animate({
                         left: -(this.$rollingBanner.width() / this.$rollingBanner.children().length) * ++_this.rollingNow
-                    }, options.SPEED, function () {
+                    }, options.SPEED, function() {
                         if (_this.rollingNow >= _this.$rollingBanner.children().length - 1) {
                             _this.rollingNow = 1;
                             _this.$rollingBanner.css('left', '-' + _this.$bannerArea.css('width'));
@@ -102,7 +102,7 @@
                 } else if (options.direction === 'right') {
                     this.$rollingBanner.animate({
                         left: -(this.$rollingBanner.width() / this.$rollingBanner.children().length) * --_this.rollingNow
-                    }, options.SPEED, function () {
+                    }, options.SPEED, function() {
                         if (_this.rollingNow <= 0) {
                             _this.rollingNow = _this.$rollingBanner.children().length - 2;
                             _this.$rollingBanner.css('left', '-' + (_this.$bannerArea.width() * (_this.$rollingBanner.children().length - 2)) + 'px');
@@ -115,7 +115,7 @@
              * @method setting
              * @description CSS 초기화 세팅
              */
-            setting: function () {
+            setting: function() {
                 var $firstBanner = null,
                     $lastBanner = null;
 
@@ -138,12 +138,12 @@
             },
 
             /** 초기화 */
-            _init: function () {
+            _init: function() {
                 this.setting();
             },
 
             /** 이벤트 핸들러 */
-            evtListener: function (options, _this) {
+            evtListener: function(options, _this) {
                 var _rolling;
 
                 function rolling() {
@@ -184,7 +184,7 @@
                     } else if (_this.rollingSet) {
                         clearInterval(_rolling);
 
-                        setTimeout(function () {
+                        setTimeout(function() {
                             if (!$(options.bannerWrap).is(':animated')) {
                                 rollingEach('left');
                                 setTimeout(rolling(), (options.TIMER + options.SPEED));
@@ -199,7 +199,7 @@
                     } else if (_this.rollingSet) {
                         clearInterval(_rolling);
 
-                        setTimeout(function () {
+                        setTimeout(function() {
                             if (!$(options.bannerWrap).is(':animated')) {
                                 rollingEach('right');
                                 setTimeout(rolling(), (options.TIMER + options.SPEED));

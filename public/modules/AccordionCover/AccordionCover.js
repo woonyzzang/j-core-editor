@@ -4,7 +4,7 @@
  * @description 아코디언
  * @author Cho Yeon Seung
  * @email irene@upleat.com
- * @create 2018.11.15
+ * @creat 2018.11.15
  * @version v1.0.0
  * @licence CC
  *
@@ -16,15 +16,6 @@
  * @param {String} Object.easing: 아코디언 슬라이딩 효과  (default - 'swing')
  * @param {String} Object.seconds: 아코디언 슬라이딩 속도  (default - '400')
  * @param {Boolean} Object.multi: 아코디언 열고닫힘 멀티유무 (default - true)
- *
- * @example
- * // HTML 구조
- * <ul class="accordion_wrap">
- *     <li>
- *         <a href="#" role="button">타이틀 영역</a>
- *         <div>콘텐츠 영역</div>
- *     </li>
- * </ul>
  */
 
 ;(function(global, doc, core, $) {
@@ -97,7 +88,7 @@
              */
             panelExpansion: function(elem, options) {
                 var $elem = $(elem);
-                
+
                 if (!this.$sliding) {
                     if (options.multi) { // 한 패널 선택시 다른 패널은 자동으로 닫힘
                         $elem.attr({title: '활성화', 'aria-expanded': true}).addClass('active').next(this.$cont).attr({tabindex: 0, 'aria-hidden': false}).show();
@@ -143,6 +134,78 @@
                     if (!$(this).next(this.$cont).is(':animated')) {
                         (!$(this).is('.active'))? _this.panelExpansion(this, options) : _this.panelCollapse(this, options);
                     }
+                });
+            }
+        });
+    };
+})(window, document, UPLEAT, jQuery);
+
+/**
+ * [UPLEAT] UI Dev Team
+ * @module AccordionCover
+ * @extends Accordion
+ * @description 아코디언 커버
+ * @author Joe Seung Woon
+ * @email seungwoon@upleat.com
+ * @create 2019.01.04
+ * @version v1.0.0
+ * @licence CC
+ *
+ * @param {Object} options - 옵션 (optional)
+ * @param {String} Object.selector: 아코디언틀 선택자 (default - '.ui_accordion_cover_area')
+ * @param {String} Object.seconds: 아코디언 슬라이딩 속도  (default - '250')
+ */
+
+;(function(global, doc, core, $) {
+    'use strict';
+
+    core.module.AccordionCover = function(app) {
+        app.accordionCover = core.Class(app.accordion, {
+            __constructor: function(options) {
+                var defaults = {
+                    selector: '.ui_accordion_cover_area', // 아코디언 틀 선택자
+                    seconds: 250 // 아코디언 슬라이딩 속도
+                };
+
+                options = _.extend(defaults, options);
+
+                this.__base(options);
+            },
+
+            /** 초기화 */
+            _init: function() {
+                this.__base();
+
+                this.$accordionItem = this.$accordionWrap.children('li');
+
+                var accordionItemSize = this.$accordionItem.length - 1;
+                var accordionWid = _.parseInt(this.$accordionWrap.css('width')),
+                    accordionItemWid = _.parseInt(this.$accordionItem.eq(0).css('width'));
+
+                this.panelMinWid = ((accordionItemWid / accordionWid) * 100) + '%';
+                this.panelMaxWid = (100 - (((accordionItemWid * accordionItemSize) / accordionWid) * 100)) + '%';
+
+                this.panelExpansion(this.$tit.eq(0)[0], {multi: true});
+                this.$accordionItem.eq(0).css({width:  this.panelMaxWid}).siblings('li').css({width:  this.panelMinWid});
+            },
+
+            /** 이벤트 핸들러 */
+            evtListener: function(options) {
+                this.__base(options);
+
+                var _that = this;
+
+                this.$tit.off('click').on('click', function(e) {
+                    e.preventDefault();
+
+                    var $this = $.$(this);
+
+                    if ($this.hasClass('active')) { return; }
+                    if (!$this.next(this.$cont).is(':animated')) {
+                        (!$this.is('.active'))? _that.panelExpansion(this, options) : _that.panelCollapse(this, options);
+                    }
+
+                    $this.parent('li').animate({width: _that.panelMaxWid}, {duration: options.seconds, easing: options.easing}).siblings('li').animate({width: _that.panelMinWid}, {duration: options.seconds, easing: options.easing});
                 });
             }
         });
