@@ -121,7 +121,7 @@
                         scrollbarPos = ($this.innerWidth() - $scrollbarThumb.innerWidth()) * -1;
                         break;
                     case 'left':
-                        // rgtPos = ($this.innerWidth() - $scrollbarThumb.innerWidth() + 18);
+                        // scrollbarPos = ($this.innerWidth() - $scrollbarThumb.innerWidth() + 18);
                         scrollbarPos = 0;
                         break;
                 }
