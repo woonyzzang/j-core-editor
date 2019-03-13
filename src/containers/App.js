@@ -43,7 +43,7 @@ class App extends Component {
             </script> 
             <script src="http://127.0.0.1:3000/cdn/libs/jquery-1.10.2.min.js"></script>
             <script src="http://127.0.0.1:3000/cdn/libs/lodash-3.10.1.min.js"></script>            
-            <script src="http://127.0.0.1:3000/cdn/upleat-core-1.0.2.min.js"></script>
+            <script src="http://127.0.0.1:3000/cdn/upleat-core-1.0.3.min.js"></script>
             <script>${codeMirrorEditorJavaScript}</script>
             <style>${codeMirrorEditorCss}</style>
             </head>
