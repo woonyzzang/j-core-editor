@@ -1,0 +1,41 @@
+/* =Reset */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0}
+body,h1,h2,h3,h4,h5,h6,select,input,textarea,button{font-family:Dotum,'돋움',Helvetica,'Apple SD Gothic Neo',sans-serif}
+body{/*-webkit-text-size-adjust:none;*/font-size:14px;color:#222;word-break:break-all}
+input,select,textarea,button{font-size:14px;vertical-align:top}
+button,input,textarea{-webkit-border-radius:0;border-radius:0}
+button{background-color:transparent;cursor:pointer}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+table{table-layout:fixed;width:100%;border-collapse:collapse;border-spacing:0}
+ol,ul{list-style:none}
+em,address{font-style:normal}
+img,fieldset,iframe{border:0}
+img{max-width:100%;height:auto;vertical-align:top}
+a{color:#333;text-decoration:none}
+area{outline:0}
+input::-ms-clear{display:none}
+input[type=date]::-webkit-inner-spin-button{display:none}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-calendar-picker-indicator{display:none}
+input[type=number]{-moz-appearance:textfield}
+select{border-radius:0}
+
+/** Custom Style */
+.scrolling{width:200px;height:250px;border:1px solid #ccc;font-size:16px;line-height:1.4}
+
+/* =Scrolling */
+.scrolling{overflow:hidden;position:relative}
+.scrolling>.scroll_view{overflow:hidden;height:100%}
+.scrolling .scroll_cont{overflow:auto;position:relative;width:100%;height:100%;padding-right:18px} /* 우측여백 padding-right 값 조절 */
+:root .scrolling .scroll_cont{width:calc(100% + 18px);box-sizing:border-box}
+.scrolling .scrollbar_track{position:absolute;top:0;right:0;bottom:0;width:10px;background-color:#eee;transition:opacity .25s linear}
+.scrolling .scrollbar_track.scrollbar_hide{display:none}
+.scrolling .scrollbar_thumb{position:absolute;top:0;z-index:2;width:100%;border-radius:4px;background-color:#888;cursor:pointer}
+.scrolling .scrollbar_thumb.draggable{-webkit-user-select:none;-ms-user-select:none;-moz-user-select:none;-o-user-select:none;user-select:none}
+.scrolling .scrollbar_thumb:hover,
+.scrolling .scrollbar_thumb:active{background-color:#555;opacity:1}
+.scrolling_direction_lft .scroll_cont{padding-right:0;padding-left:18px}
+.scrolling_direction_lft .scrollbar_track{right:auto;left:0}  /* 좌측여백 padding-left 값 조절 */
+.scrolling_dynamic .scrollbar_track{opacity:0}
+.scrolling_dynamic:hover .scrollbar_track,
+.scrolling_dynamic:active .scrollbar_track{opacity:1}

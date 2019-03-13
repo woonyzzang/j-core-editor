@@ -1,24 +1,14 @@
 [
-    {
-      "module": "accodian",
-      "url": {
-        "html": "http://127.0.0.1:3000/modules/Accordion/Accordion.html",
-        "css": "http://127.0.0.1:3000/modules/Accordion/Accordion.css",
-        "javascript": "http://127.0.0.1:3000/modules/Accordion/Accordion.js"
-      },
-      "version": "v1.0.0",
-      "author": "조연승"
+  {
+    "module": "accodian",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/Accordion/Accordion.html",
+      "css": "http://127.0.0.1:3000/modules/Accordion/Accordion.css",
+      "javascript": "http://127.0.0.1:3000/modules/Accordion/Accordion.js"
     },
-    {
-      "module": "menu",
-      "url": {
-        "html": "http://127.0.0.1:3000/modules/Menu/Menu.html",
-        "css": "http://127.0.0.1:3000/modules/Menu/Menu.css",
-        "javascript": "http://127.0.0.1:3000/modules/Menu/Menu.js"
-      },
-      "version": "v1.0.0",
-      "author": "오지환"
-    },
+    "version": "v1.0.0",
+    "author": "조연승"
+  },
   {
     "module": "mobileDeviceInfo",
     "url": {
@@ -29,26 +19,36 @@
     "version": "v1.0.0",
     "author": "조승운"
   },
-    {
-      "module": "mobilePreview",
-      "url": {
-        "html": "http://127.0.0.1:3000/modules/MobilePreview/MobilePreview.html",
-        "css": "http://127.0.0.1:3000/modules/MobilePreview/MobilePreview.css",
-        "javascript": "http://127.0.0.1:3000/modules/MobilePreview/MobilePreview.js"
-      },
-      "version": "v1.0.0",
-      "author": "조승운"
+  {
+    "module": "mobilePreview",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/MobilePreview/MobilePreview.html",
+      "css": "http://127.0.0.1:3000/modules/MobilePreview/MobilePreview.css",
+      "javascript": "http://127.0.0.1:3000/modules/MobilePreview/MobilePreview.js"
     },
-    {
-      "module": "tabMemu",
-      "url": {
-        "html": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.html",
-        "css": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.css",
-        "javascript": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.js"
-      },
-      "version": "v1.0.0",
-      "author": "정란"
+    "version": "v1.0.0",
+    "author": "조승운"
+  },
+  {
+    "module": "scrolling",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/Scrolling/Scrolling.html",
+      "css": "http://127.0.0.1:3000/modules/Scrolling/Scrolling.css",
+      "javascript": "http://127.0.0.1:3000/modules/Scrolling/Scrolling.js"
     },
+    "version": "v1.0.0",
+    "author": "조승운"
+  },
+  {
+    "module": "tabMemu",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.html",
+      "css": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.css",
+      "javascript": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.js"
+    },
+    "version": "v1.0.0",
+    "author": "정란"
+  },
   {
     "module": "visualRolling",
     "url": {
@@ -58,5 +58,15 @@
     },
     "version": "v1.0.0",
     "author": "노영일"
+  },
+  {
+    "module": "hamMenu",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/HamMenu/HamMenu.html",
+      "css": "http://127.0.0.1:3000/modules/HamMenu/HamMenu.css",
+      "javascript": "http://127.0.0.1:3000/modules/HamMenu/HamMenu.js"
+    },
+    "version": "v1.0.0",
+    "author": "오지환"
   }
 ]

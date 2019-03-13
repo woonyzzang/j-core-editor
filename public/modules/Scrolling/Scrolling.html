@@ -1,0 +1,20 @@
+<!-- scrolling -->
+<div class="scrolling ui_scrolling">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<!-- //scrolling -->
+
+<script>
+;(function(global, doc, core, $) {
+    'use strict';
+
+    core.modules(['Scrolling'], function(Module) {
+        // new Module.scrolling();
+        new Module.scrolling({
+            selector: '.ui_scrolling', // 스크롤링 DOM 선택자
+            // direction: 'left', // 스크롤바 좌/우 위치
+            // dynamic: true // 스크롤바 동적 모드
+        });
+    });
+})(window, document, UPLEAT, jQuery);
+</script>
