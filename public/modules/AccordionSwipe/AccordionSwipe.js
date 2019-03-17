@@ -69,7 +69,7 @@
             },
 
             /** 스와이프 AsixY 축 이동 */
-            move: function($selector, posY, speed) {
+            move: function($selector, posY) {
                 $selector.animate({top: posY}, this.SPEED);
             },
 
