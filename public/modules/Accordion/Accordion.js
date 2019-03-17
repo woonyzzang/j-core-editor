@@ -90,7 +90,7 @@
             },
 
             /**
-             * @method panelCollapse
+             * @method panelExpansion
              * @description 패널 펼치기
              * @param {Object} elem - DOM셀렉터
              * @param {Object} options - 옵션

@@ -15,11 +15,13 @@
     core.module.Checkboxes = function(app) {
         app.checkboxes = core.Class({
             __constructor: function(options) {
-                options = _.extend({
+                var defaults = {
                     selector: '.ui_checkboxes',
                     checkboxAll: '.ui_checkbox_all',
                     checkbox: '.ui_checkbox'
-                }, options);
+                };
+
+                options = _.extend(defaults, options);
 
                 this.$selector = $(options.selector);
                 this.$checkboxAll = this.$selector.find(':checkbox' + options.checkboxAll);
