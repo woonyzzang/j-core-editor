@@ -2,11 +2,14 @@
  * [UPLEAT] UI Dev Team
  * @module TabMenu
  * @description 탭메뉴
- * @author 정란
+ * @author Jeong Ran
  * @email wjdfks@upleat.com
  * @create 18.11.08
- * @version v1.0.0
+ * @version v1.0.1
  * @licence CC
+ *
+ * @param {Object} options - 옵션 (optional)
+ * @param {String} Object.selector: 탭메뉴 선택자 (default - '.ui_tab_area')
  *
  * @example
  * <div class="tabWrap">
@@ -41,8 +44,9 @@
                 this.$tab = this.$tabArea.find('.tab_menu a[role=tab]');
                 this.$firstTab = this.$tabArea.find('.tab_menu li:first>a');
                 this.$lastTab = this.$tabArea.find('.tab_menu li:last>a');
-                this.$firstPanel = this.$tabArea.children('.tab_cont:first');
+                this.$firstPanel = this.$tabArea.children('.tab_cont:first-of-type');
 
+                this._init();
                 this.evtListener();
             },
 
@@ -53,47 +57,54 @@
              * @param {String} direction - 방향
              */
             activeTab: function(selector, direction) {
-                var $nextTab = $(selector).parent()[direction]().find('a');
+                var $currentTab = $(selector);
+                var $nextTab = $currentTab.parent()[direction]().find('a');
                 var $nextPanelId = $('#' + $nextTab.attr('aria-controls'));
 
-                this.$tab.attr({'aria-selected': false, tabindex: -1});
+                $currentTab.attr({'aria-selected': false, tabindex: -1});
                 $nextTab.attr({'aria-selected': true, tabindex: 0}).focus();
                 $nextPanelId.show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
+            },
+
+            /** 초기화 */
+            _init: function() {
+                this.$firstTab.attr({'aria-selected': true, tabindex: 0});
+                this.$firstPanel.show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
             },
 
             /** 이벤트 핸들러  */
             evtListener: function() {
                 var _that = this;
 
-                this.$firstTab.attr({'aria-selected': true, tabindex: 0});
-				this.$firstPanel.show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
-
-                // 클릭이벤트
-                this.$tab.on('click',function(e) {
+                // 탭 메뉴 클릭 이벤트
+                this.$tab.on('click', function(e) {
                     e.preventDefault();
 
-                    var $panelId = $("#" + $(this).attr('aria-controls'));
+                    var $this = $.$(this);
+                    var $panelId = $('#' + $this.attr('aria-controls'));
 
-                    _that.$tab.attr({'aria-selected': false, tabindex: -1});
-					$(this).attr({'aria-selected': true, tabindex: 0});
+                    $this.attr({'aria-selected': true, tabindex: 0}).parent('li').siblings('li').children('a[role=tab]').attr({'aria-selected': false, tabindex: -1});
                     $panelId.show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
                 });
 
-                // 키보드이벤트
-                this.$tab.on('keydown',function(e) {
+                // 탭 메뉴 키보드 이벤트
+                this.$tab.on('keydown', function(e) {
+                    var $this = $.$(this);
+                    var $tabArea = $this.parents('.tab_area');
+                    var firstPanelId = $tabArea.children('.tab_cont:first').attr('id');
+                    var lastPanelId = $tabArea.children('.tab_cont:last').attr('id');
                     var keycode = e.keyCode || e.which;
-                    var lastPanelId = 'tabCont' + $('.tab_cont').length;
 
-                    // 오른쪽 방향키 또는 아럐쪽 방향키
+                    // 오른쪽 방향키 또는 아래쪽 방향키
                     if (keycode === 39 || keycode === 40) {
                         e.preventDefault();
 
                         _that.activeTab(this, 'next');
 
-                        if ($(this).attr('aria-controls') === lastPanelId) {
-                            _that.$tab.attr('aria-selected', false);
-                            _that.$firstTab.attr({'aria-selected': true, 'tabindex': 0}).focus();
-                            _that.$firstPanel.show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
+                        if ($this.attr('aria-controls') === lastPanelId) {
+                            $this.parent('li').siblings('li').children('a[role=tab]').attr('aria-selected', false);
+                            $tabArea.find('.tab_menu li:first>a').attr({'aria-selected': true, 'tabindex': 0}).focus();
+                            $tabArea.find('.tab_cont:first').show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
                         }
                     }
 
@@ -103,10 +114,10 @@
 
                         _that.activeTab(this, 'prev');
 
-                        if ($(this).attr('aria-controls') === 'tabCont1') {
-                            _that.$tab.attr('aria-selected', false);
-                            _that.$lastTab.attr({'aria-selected': true, tabindex: 0}).focus();
-                            $('#' + lastPanelId).show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
+                        if ($this.attr('aria-controls') === firstPanelId) {
+                            $this.parent('li').siblings('li').children('a[role=tab]').attr('aria-selected', false);
+                            $tabArea.find('.tab_menu li:last>a').attr({'aria-selected': true, tabindex: 0}).focus();
+                            $tabArea.find('.tab_cont:last').show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
                         }
                     }
 
@@ -114,11 +125,12 @@
                     if (keycode === 32 || keycode === 13) {
                         e.preventDefault();
 
-                        var $panelId = $('#' + $(this).attr('aria-controls'));
+                        var $panelId = $('#' + $this.attr('aria-controls'));
 
-                        $panelId.show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
-                        _that.$tab.attr({'aria-selected': false, tabindex: -1});
-                        $(this).attr({'aria-selected': true, tabindex: 0});
+                        $panelId.show().focus().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
+                        $this.parent('li').siblings('li').children('a[role=tab]').attr({'aria-selected': false, tabindex: -1});
+                        $this.attr({'aria-selected': true, tabindex: 0});
+
                     }
                 });
             }
