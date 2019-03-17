@@ -16,7 +16,7 @@
  * @example
  * // HTML 구조
  * <div class="scrolling ui_scrolling"
- *      <!-- 컨텐츠 내용... -->
+ *      컨텐츠 내용...
  * </div>
  *
  * // JavaScript 모듈 사용

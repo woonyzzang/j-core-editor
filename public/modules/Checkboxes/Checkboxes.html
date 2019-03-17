@@ -1,0 +1,37 @@
+<!-- checkboxes -->
+<div class="checkboxes ui_checkboxes">
+    <div class="total">
+        <input type="checkbox" id="checkAll" class="ui_checkbox_all">
+        <label for="checkAll">전체동의</label>
+    </div>
+
+    <ul>
+        <li>
+            <input type="checkbox" id="check1" class="ui_checkbox">
+            <label for="check1">개인정보 수집 및 이용에 대한 안내 (필수)</label>
+        </li>
+        <li>
+            <input type="checkbox" id="check2" class="ui_checkbox">
+            <label for="check2">위치정보 이용약관 동의 (필수)</label>
+        </li>
+        <li>
+            <input type="checkbox" id="check3">
+            <label for="check3">이벤트 등 프로모션 알림 메일 수신 (선택)</label>
+        </li>
+    </ul>
+</div>
+<!-- //checkboxes -->
+
+<script>
+;(function(global, doc, core, $, _) {
+    'use strict';
+
+    core.modules(['Checkboxes'], function(Module) {
+        new Module.checkboxes({
+            selector: '.ui_checkboxes', // 체크박스 틀 선택자 (선택옵션)
+            checkboxAll: '.ui_checkbox_all', // 전체 연동 체크박스 클래스명 (선택옵션)
+            checkbox: '.ui_checkbox' // 개별 연동 체크박스 클래스명 (선택옵션)
+        });
+    });
+})(window, document, UPLEAT, jQuery, _);
+</script>

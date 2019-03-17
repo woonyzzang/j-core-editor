@@ -10,6 +10,36 @@
     "author": "조연승"
   },
   {
+    "module": "accodianCover",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/AccordionCover/AccordionCover.html",
+      "css": "http://127.0.0.1:3000/modules/AccordionCover/AccordionCover.css",
+      "javascript": "http://127.0.0.1:3000/modules/AccordionCover/AccordionCover.js"
+    },
+    "version": "v1.0.0",
+    "author": "조승운"
+  },
+  {
+    "module": "accodianSwipe",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/AccordionSwipe/AccordionSwipe.html",
+      "css": "http://127.0.0.1:3000/modules/AccordionSwipe/AccordionSwipe.css",
+      "javascript": "http://127.0.0.1:3000/modules/AccordionSwipe/AccordionSwipe.js"
+    },
+    "version": "v1.0.0",
+    "author": "조승운"
+  },
+  {
+    "module": "checkboxes",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/Checkboxes/Checkboxes.html",
+      "css": "http://127.0.0.1:3000/modules/Checkboxes/Checkboxes.css",
+      "javascript": "http://127.0.0.1:3000/modules/Checkboxes/Checkboxes.js"
+    },
+    "version": "v1.0.0",
+    "author": "김규연"
+  },
+  {
     "module": "mobileDeviceInfo",
     "url": {
       "html": "http://127.0.0.1:3000/modules/MobileDeviceInfo/MobileDeviceInfo.html",
@@ -30,6 +60,16 @@
     "author": "조승운"
   },
   {
+    "module": "modal",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/Modal/Modal.html",
+      "css": "http://127.0.0.1:3000/modules/Modal/Modal.css",
+      "javascript": "http://127.0.0.1:3000/modules/Modal/Modal.js"
+    },
+    "version": "v1.0.0",
+    "author": "백은숙"
+  },
+  {
     "module": "scrolling",
     "url": {
       "html": "http://127.0.0.1:3000/modules/Scrolling/Scrolling.html",
@@ -40,6 +80,16 @@
     "author": "조승운"
   },
   {
+    "module": "selectbox",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/Selectbox/Selectbox.html",
+      "css": "http://127.0.0.1:3000/modules/Selectbox/Selectbox.css",
+      "javascript": "http://127.0.0.1:3000/modules/Selectbox/Selectbox.js"
+    },
+    "version": "v1.0.0",
+    "author": "송민규"
+  },
+  {
     "module": "tabMemu",
     "url": {
       "html": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.html",
@@ -48,6 +98,16 @@
     },
     "version": "v1.0.0",
     "author": "정란"
+  },
+  {
+    "module": "toast",
+    "url": {
+      "html": "http://127.0.0.1:3000/modules/Toast/Toast.html",
+      "css": "http://127.0.0.1:3000/modules/Toast/Toast.css",
+      "javascript": "http://127.0.0.1:3000/modules/Toast/Toast.js"
+    },
+    "version": "v1.0.0",
+    "author": "남인태"
   },
   {
     "module": "visualRolling",

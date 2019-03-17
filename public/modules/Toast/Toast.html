@@ -1,0 +1,30 @@
+<button type="button" id="btnTest">클릭</button>
+
+<!-- toast -->
+<div class="toast ui_toast">
+    <div class="inr">1 등록 되었습니다.</div>
+    <button type="button" class="btn_close ui_btn_close"><span class="blind">닫기</span></button>
+</div>
+<!-- //toast -->
+
+<script>
+;(function(global, doc, core, $, _) {
+    'use strict';
+
+    core.modules(['Toast'], function(Module) {
+        var Toast = new Module.toast({
+            selector: '.ui_toast', // 토스트팝업 선택자(선택옵션)
+            direction: 'left', // 토스트팝업 방향 설정(선택옵션)
+            center: false, // 토스트팝업 센터 정렬 유무(선택옵션)
+            seconds: 3000 // 토스트팝업 쇼타임(선택옵션)
+        });
+
+        // Toast.show(); //바로 호출
+
+        // [T] 이벤트 호출 테스트용
+        $('#btnTest').on('click', function() {
+            Toast.show();
+        });
+    });
+})(window, document, UPLEAT, jQuery, _);
+</script>

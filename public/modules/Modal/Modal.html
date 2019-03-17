@@ -1,0 +1,47 @@
+<!-- wrap -->
+<div id="wrap">
+    <h1>Modal Layer Popup</h1>
+    <button type="button" data-modal-target="#layer1" data-dimmed-show="true" title="새창" class="btn_pop_open ui_btn_pop_open">레이어팝업 열기</button>
+    <button type="button" data-modal-target="#layer1" data-dimmed-show="false" title="새창" class="btn_pop_open ui_btn_pop_open">레이어팝업 열기</button>
+    <button type="button" data-modal-target="#layer1" title="새창" class="btn_pop_open ui_btn_pop_open">레이어팝업 열기</button>
+</div>
+<!-- //wrap -->
+
+<!-- ly_pop -->
+<div role="dialog" aria-hidden="true" aria-labelledby="popTitle1" id="layer1" class="ly_pop ui_ly_pop">
+    <div class="ly_pop_wrap">
+        <!-- ly_pop_header -->
+        <div class="ly_pop_header">
+            <h1 id="popTitle1">타이틀 1</h1>
+        </div>
+        <!-- //ly_pop_header -->
+        <!-- ly_pop_container -->
+        <div class="ly_pop_container">
+            <!-- ly_pop_content -->
+            <div class="ly_pop_content">
+                <p>레이어팝업 콘텐츠 영역...<p>
+                <a href="#">링크1</a>
+            </div>
+            <!-- //ly_pop_content -->
+        </div>
+        <!-- //ly_pop_container -->
+        <!-- ly_pop_footer -->
+        <div class="ly_pop_footer">
+            <button type="button" class="btn_pop_close">닫기</button>
+        </div>
+        <!-- //ly_pop_footer -->
+    </div>
+</div>
+<!-- //ly_pop -->
+
+<script>
+;(function(global, doc, core, $) {
+    'use strict';
+
+    core.modules(['Modal'], function(Module) {
+        var modal = new Module.modal({
+            dimmed: '#dimmed'
+        });
+    });
+})(window, document, UPLEAT, jQuery);
+</script>

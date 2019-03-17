@@ -1,0 +1,64 @@
+<!-- accordion_swipe -->
+<div class="accordion_swipe ui_accordion_swipe">
+    <div class="item">
+        <div class="menu">
+            <div class="hgroup">
+                <strong>타이틀1</strong>
+                <span>부가설명1</span>
+            </div>
+            <div class="cont">
+                <strong>소제목<br>들어갈곳</strong>
+                <ul>
+                    <li><a href="#">링크1</a></li>
+                    <li><a href="#">링크2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="menu">
+            <div class="hgroup">
+                <strong>타이틀2</strong>
+                <span>부가설명2</span>
+            </div>
+            <div class="cont">
+                <strong>소제목<br>들어갈곳</strong>
+                <ul>
+                    <li><a href="#">링크1</a></li>
+                    <li><a href="#">링크2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="menu">
+            <div class="hgroup">
+                <strong>타이틀3</strong>
+                <span>부가설명3</span>
+            </div>
+            <div class="cont">
+                <strong>소제목<br>들어갈곳</strong>
+                <ul>
+                    <li><a href="#">링크1</a></li>
+                    <li><a href="#">링크2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //accordion_swipe -->
+
+<script>
+;(function(global, doc, core, $, _) {
+    'use strict';
+
+    core.modules(['AccordionSwipe'], function(Module) {
+        new Module.accordionSwipe({
+            selector: '.ui_accordion_swipe', // 아코디언 스와이프 선택자
+            maxHeight: -150, // 아코디언 스와이프 컨텐츠 펼침 높이값
+            distance: 40, // 아코디언 스와이프 터치 asixY 오차범위 값
+            speed: 250 // 아코디언 스와이프 슬라이딩 속도
+        });
+    });
+})(window, document, UPLEAT, jQuery, _);
+</script>

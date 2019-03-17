@@ -1,0 +1,31 @@
+<!-- select_wrap -->
+<select class="select_wrap select_type2 ui_selectbox" data-width="200">
+    <option value="january">January</option>
+    <option value="february">February</option>
+    <option value="march">March</option>
+    <option value="april">April</option>
+</select>
+<!-- //select_wrap -->
+<!-- select_wrap -->
+<select class="select_wrap ui_selectbox">
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+</select>
+<!-- //select_wrap -->
+
+<script>
+;(function(global, doc, core, $) {
+    'use strict';
+
+    core.modules(['Selectbox'], function(Module) {
+        new Module.selectbox({
+            selector: 'ui_selectbox', // 커스템 셀렉트박스 적용시 체크 클랙스
+            onChgLink: true // 셀렉트 onChange 이벤트 유무
+        });
+    });
+})(window, document, UPLEAT, jQuery);
+</script>
