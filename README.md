@@ -1,6 +1,9 @@
 # J Core Editor
 > HTML, CSS, JavaScript를 웹에서 코드를 작성하여 실시간으로 확인하고 , J Core 라이브러리 관련 모듈들을 테스트 및 소스분석 목적으로 사용 하기에 유용한 웹 어플리케이션 입니다. 
 
+## preview
+![J Core Editor Preview](@preview/J-Core-Editor-Preview.jpg)
+
 ## Use Guide
 > HTML, CSS, JavaScript 각 패널 영역에 해당 언어의 코드를 입력할 수 있습니다. Output 패널 영역은 입력된 결과가 출력되는 View 화면 입니다. 
 
