@@ -10,8 +10,8 @@
 /.pnp
 .pnp.js
 
-# mockup download
-/_mockup/@download
+# mockup
+/_mockup
 
 # testing
 /coverage
