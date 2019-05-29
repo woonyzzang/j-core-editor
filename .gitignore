@@ -10,9 +10,6 @@
 /.pnp
 .pnp.js
 
-# mockup
-#/_mockup
-
 # testing
 /coverage
 
