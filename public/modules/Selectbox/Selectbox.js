@@ -31,7 +31,7 @@
  *     'use strict';
  *
  *    core.modules(['SelectUI'], function(Module) {
- *	      new Module.SelectUI({class: 'ori-select', onChgLink: 'false'});
+ *      new Module.SelectUI({class: 'ori-select', onChgLink: 'false'});
  *    });
  * })(window, document, UPLEAT, jQuery);
  */
@@ -62,7 +62,6 @@
              * @param {Object} options - 옵션
              */
             _targetWidth: function(el, options) {
-                var _this = this;
                 var elWrap = $(el).parent();
 
                 if ($(el).data('width')) {
@@ -81,9 +80,9 @@
              * @param {Object} keyCode - 키보드이벤트 keyCode 값
              */
             _headerUpDown: function(evtOptionList, idx, obj, keyCode) {
-                if ((keyCode === 40) && (idx<evtOptionList.length - 1)) {
+                if ((keyCode === 40) && (idx < evtOptionList.length - 1)) {
                     idx++;
-                } else if ((keyCode === 38) && (idx>0)) {
+                } else if ((keyCode === 38) && (idx > 0)) {
                     idx--;
                 }
 
@@ -100,7 +99,7 @@
              */
             _showOptions: function(el, options) {
                 $('.' + options.selectHeader + '.active').not(this).each(function() {
-                    $(this).removeClass('active').next('.'+ options.selOptions).hide();
+                    $(this).removeClass('active').next('.' + options.selOptions).hide();
                 });
 
                 $(el).toggleClass('active').next('.' + options.selOptions).toggle();
@@ -115,7 +114,7 @@
             //     window.location.href='http://www.naver.com';
             // },
 
-            /** 초기화 **/
+            /* 초기화 */
             _init: function(options) {
                 var _this = this;
                 var $frag = $(document.createDocumentFragment());
@@ -125,7 +124,7 @@
                 _.forEach(_this.$selectList, function(selects) {
                     var selectClassName = $(selects).attr('class');
 
-                    $(selects).wrap('<div role="listbox" class="'+ selectClassName + '">');
+                    $(selects).wrap('<div role="listbox" class="' + selectClassName + '">');
                     $(selects).addClass('select_hidden');
 
                     _this.$selectHeader = $('<div />', {
@@ -140,7 +139,7 @@
                         'class': options.selOptions
                     }).insertAfter(_this.$selectHeader);
 
-                    _.forEach($(selects).children('option'), function(el, index) {
+                    _.forEach($(selects).children('option'), function(el) {
                         $frag.append($(
                             '<li />', {
                                 role: 'option',
@@ -156,7 +155,7 @@
                 });
             },
 
-            /** 이벤트 핸들러 **/
+            /* 이벤트 핸들러 */
             _evtListener: function(options) {
                 var _this = this;
                 var optionHeader = _this.$selectList.next();
@@ -164,9 +163,9 @@
                 var optionList = optionWrap.children('li');
 
                 $(doc).on('click', function(e) {
-                    var container = $('.'+ options.selector);
+                    var container = $('.' + options.selector);
 
-                    if (!container.has(e.target).length) _this.$selectList.next('.select_header').removeClass('active').next().hide();
+                    if (!container.has(e.target).length) { _this.$selectList.next('.select_header').removeClass('active').next().hide(); }
                 });
 
                 optionHeader.on('keydown mousedown', function(e) {
@@ -177,7 +176,7 @@
                     var idx = $this.next().children('li.selected').index();
 
                     if ((e.type === 'mousedown') || (e.keyCode === 13)) {
-                        if($this.hasClass('active')) {
+                        if ($this.hasClass('active')) {
                             $this.removeClass('active');
                             $this.next().hide();
                         } else {
@@ -208,7 +207,6 @@
                     //     _this._onChgLink();
                     // }
                 });
-
             }
         });
     };

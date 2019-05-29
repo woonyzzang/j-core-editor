@@ -84,7 +84,7 @@
                 this._init(options);
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function(options) {
                 if (!core.browser.isMobile) { return false; }
 
@@ -115,7 +115,7 @@
                 this._init(options);
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function(options) {
                 if (!core.browser.isMobile) { return false; }
 

@@ -5,20 +5,20 @@
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
-    "codemirror": "^5.41.0",
+    "codemirror": "^5.47.0",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",
-    "material-icons": "^0.2.3",
+    "material-icons": "^0.3.1",
     "open-color": "^1.6.3",
-    "prop-types": "^15.6.2",
-    "react": "^16.6.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
     "react-codemirror": "^1.0.0",
-    "react-dom": "^16.6.3",
-    "react-redux": "^5.1.1",
-    "react-scripts": "2.1.1",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "react-scripts": "^3.0.1",
     "react-split": "^2.0.4",
     "redux": "^4.0.1",
-    "redux-actions": "^2.6.4"
+    "redux-actions": "^2.6.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,6 +37,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "node-sass": "^4.10.0"
+    "node-sass": "^4.12.0"
   }
 }

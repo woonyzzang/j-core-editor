@@ -15,21 +15,21 @@
 <!-- //ham_menu_area -->
 
 <script>
-    ;(function(global, doc, core, $) {
-        'use strict';
+;(function(global, doc, core, $) {
+    'use strict';
 
-        core.modules(['HamMenu'], function(Module) {
-            var hamMenu = new Module.hamMenu({
-                menuArea: '.ui_ham_menu_area', // 메뉴 버튼 클래스
-                menuBtn: '.ui_btn_menu', // 메뉴 버튼 클래스
-                menuDim: '.ui_dim_menu', // 메뉴 바닥(딤) 클래스
-                menuCont: '.ui_cont_menu', // 메뉴 컨텐츠 클래스
-                // moveLeft: '.ui_left_move', // 메뉴 이동 클래스
-                speed: 150 // 메뉴가 튀어나오는 시간 조절
-            });
-
-            // 기본 옵션을 원하는 경우
-            // var hamMenu = new Module.hamMenu();
+    core.modules(['HamMenu'], function(Module) {
+        var hamMenu = new Module.hamMenu({
+            menuArea: '.ui_ham_menu_area', // 메뉴 버튼 클래스
+            menuBtn: '.ui_btn_menu', // 메뉴 버튼 클래스
+            menuDim: '.ui_dim_menu', // 메뉴 바닥(딤) 클래스
+            menuCont: '.ui_cont_menu', // 메뉴 컨텐츠 클래스
+            // moveLeft: '.ui_left_move', // 메뉴 이동 클래스
+            speed: 150 // 메뉴가 튀어나오는 시간 조절
         });
-    })(window, document, UPLEAT, jQuery);
+        
+        // 기본 옵션을 원하는 경우
+        // var hamMenu = new Module.hamMenu();
+    });
+})(window, document, UPLEAT, jQuery);
 </script>

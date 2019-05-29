@@ -36,7 +36,7 @@
                 var defaults = {
                     selector: '.ui_accordion_area', // 아코디언 틀 선택자
                     title: 'accordion_tit', // 아코디언 타이틀 클래스명
-                    content: 'accordion_cont', //아코디언 콘텐츠 클래스명
+                    content: 'accordion_cont', // 아코디언 콘텐츠 클래스명
                     sliding: false, // 아코디언 슬라이딩 효과 유무
                     easing: 'swing', // 아코디언 슬라이딩 효과
                     seconds: 400, // 아코디언 슬라이딩 속도
@@ -97,7 +97,7 @@
              */
             panelExpansion: function(elem, options) {
                 var $elem = $(elem);
-                
+
                 if (!this.$sliding) {
                     if (options.multi) { // 한 패널 선택시 다른 패널은 자동으로 닫힘
                         $elem.attr({title: '활성화', 'aria-expanded': true}).addClass('active').next(this.$cont).attr({tabindex: 0, 'aria-hidden': false}).show();
@@ -127,13 +127,13 @@
                 }
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function() {
                 this.$tit.attr({title: '비활성화', role: 'heading', 'aria-expanded': false}); // 접근성관련 타이틀 헤딩태그
                 this.$cont.attr({tabindex: -1, role: 'region', 'aria-hidden': true}); // 접근성관련 콘텐츠 헤딩태그
             },
 
-            /** 이벤트 핸들러 */
+            /* 이벤트 핸들러 */
             evtListener: function(options) {
                 var _this = this;
 
@@ -141,7 +141,7 @@
                     e.preventDefault();
 
                     if (!$(this).next(this.$cont).is(':animated')) {
-                        (!$(this).is('.active'))? _this.panelExpansion(this, options) : _this.panelCollapse(this, options);
+                        (!$(this).is('.active')) ? _this.panelExpansion(this, options) : _this.panelCollapse(this, options);
                     }
                 });
             }

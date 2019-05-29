@@ -29,7 +29,7 @@
         <div class="accordion_cont"><!-- [D] 커버 이미지 영역 --></div>
     </li>
 </ul>
-<!-- // accordion_cover_area -->
+<!-- //accordion_cover_area -->
 
 <script>
 ;(function(global, doc, core, $, _) {
@@ -37,6 +37,7 @@
 
     core.modules(['Accordion', 'AccordionCover'], function(Module) {
         new Module.accordionCover({
+            // selector: '.ui_accordion_cover_area', // 아코디언 틀 선택자
             // easing: 'easeOutBounce', // 아코디언 슬라이딩 효과 (선택옵션)
             // seconds: 600 // 아코디언 슬라이딩 속도 (선택옵션)
         });

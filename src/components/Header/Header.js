@@ -13,22 +13,24 @@ import * as lyPopEditorActions from '../../actions/lyPopEditor';
 
 import styles from './Header.scss';
 
+const devMode = true; // 빌드할 경우 false 변경
+
 class Header extends Component {
     controlsRef = React.createRef();
 
     static defaultProps = {
         headerTitle: 'J Editor',
         onPanelChangeSize: () => console.warn('onPanelChangeSize not defined')
-    }
+    };
 
     static propTypes = {
         headerTitle: PropTypes.string.isRequired,
         onPanelChangeSize: PropTypes.func
-    }
+    };
 
     state = {
         componentDatas: []
-    }
+    };
 
     /** 컴포넌트 모듈 변경 */
     componentChange = (e) => {
@@ -47,21 +49,30 @@ class Header extends Component {
                 deferred.then(this.props.onUpdateOutput);
                 break;
             default:
-                axios.get('http://127.0.0.1:3000/modules/data.json')
+                let locationURI = window.location.origin + '/core-uidev';
+
+                if (devMode) {
+                    locationURI = window.location.origin;
+                }
+
+                axios.get(`${locationURI}/modules/data.json`)
                     .then((res) => { // SUCCESS
                         res.data.forEach((data) => {
                             if (val === data.module) {
-                                axios.all([axios.get(data.url.html), axios.get(data.url.css), axios.get(data.url.javascript)])
-                                    .then(axios.spread((htmlCode, cssCode, javascriptCode) => {
-                                        const deferred = new Promise((resolve) => {
-                                            setTimeout(() => {
-                                                CodeMirrorEditorActions.setComponent({htmlCode: htmlCode['data'], cssCode: cssCode['data'], javascriptCode: javascriptCode['data']});
-                                                resolve();
-                                            }, 250);
-                                        });
+                                axios.all([
+                                    axios.get((!!data.url.html.match( /^(http(s?))/)) ? data.url.html : locationURI + data.url.html),
+                                    axios.get((!!data.url.css.match( /^(http(s?))/)) ? data.url.css : locationURI + data.url.css),
+                                    axios.get((!!data.url.javascript.match( /^(http(s?))/)) ? data.url.javascript : locationURI + data.url.javascript)
+                                ]).then(axios.spread((htmlCode, cssCode, javascriptCode) => {
+                                    const deferred = new Promise((resolve) => {
+                                        setTimeout(() => {
+                                            CodeMirrorEditorActions.setComponent({htmlCode: htmlCode['data'], cssCode: cssCode['data'], javascriptCode: javascriptCode['data']});
+                                            resolve();
+                                        }, 250);
+                                    });
 
-                                        deferred.then(this.props.onUpdateOutput);
-                                    }));
+                                    deferred.then(this.props.onUpdateOutput);
+                                }));
                             }
                         });
                     })
@@ -102,7 +113,13 @@ class Header extends Component {
 
     /** 첫 렌더링 시점 완료 (컴포넌트 라이프 사이클) */
     componentDidMount() {
-        axios.get('http://127.0.0.1:3000/modules/data.json')
+        let locationURI = window.location.origin + '/core-uidev';
+
+        if (devMode) {
+            locationURI = window.location.origin;
+        }
+
+        axios.get(`${locationURI}/modules/data.json`)
             .then((res) =>
                 // 데이터 가공
                 res.data.map((data) => ({

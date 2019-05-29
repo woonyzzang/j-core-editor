@@ -12,12 +12,12 @@ class PageTemplate extends Component {
     static defaultProps = {
         header: PropTypes.element,
         children: PropTypes.element
-    }
+    };
 
     static propTypes = {
         header: PropTypes.element.isRequired,
         children: PropTypes.array.isRequired
-    }
+    };
 
     render() {
         const cx = classNames.bind(styles);

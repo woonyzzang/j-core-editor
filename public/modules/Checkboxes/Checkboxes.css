@@ -25,6 +25,7 @@ body{background-color:#f7f7f7}
 
 /* =Checkboxes */
 .checkboxes{max-width:340px;padding:20px;box-shadow:0 10px 15px 0 rgba(0,0,0,.1);background-color:#fff}
+.checkboxes+.checkboxes{margin-top:50px}
 .checkboxes .total input[type=checkbox]{vertical-align:0;}
 .checkboxes .total label{font-weight:bold;font-size:16px;color:#666;transition:color.4s}
 .checkboxes .total input[type=checkbox]:checked+label{color:#1a1a1a}

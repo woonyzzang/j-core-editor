@@ -15,7 +15,7 @@
  *
  * @example
  * // HTML 구조
- * <div class="scrolling ui_scrolling"
+ * <div class="scrolling ui_scrolling">
  *      컨텐츠 내용...
  * </div>
  *
@@ -48,7 +48,7 @@
                 this.$scrollCont = $('<div />', {'class': 'scroll_cont ui_scroll_cont'});
                 this.$scrollbarTrack = $('<div />', {'class': 'scrollbar_track ui_scrollbar_track'});
                 this.$scrollbarThumb = $('<div />', {'class': 'scrollbar_thumb ui_scrollbar_thumb'});
-                this.direction = options.direction; //this.$scrolling.css('direction');
+                this.direction = options.direction;
                 this.dynamic = options.dynamic;
                 this.scrollRatio = 0;
                 this.lastPageY = 0;
@@ -60,7 +60,8 @@
             /**
              * @method rAF
              * @description 애니메이션 프레임 타이머
-             * @param  {Function} cb - 콜백함수
+             * @param {Function} cb - 콜백함수
+             * @return {Function} - 콜백함수
              */
             rAF: function(cb) {
                 return global.requestAnimationFrame || global.webkitRequestAnimationFrame || global.mozRequestAnimationFrame || global.oRequestAnimationFrame || global.msRequestAnimationFrame || function(cb) {
@@ -71,8 +72,8 @@
             /**
              * @method drag
              * @description 스크롤바 드래그 MOVE
-             * @param  {Object} selector - DOM셀렉터
-             * @param  {Object} Event - 이벤트
+             * @param {Object} selector - DOM셀렉터
+             * @param {Object} e - 이벤트
              */
             drag: function(selector, e) {
                 var _that = this;
@@ -114,32 +115,18 @@
                     $scrollbarThumb = $scrollbarTrack.children('.ui_scrollbar_thumb');
                 var totalHgt = $scrollCont[0].scrollHeight,
                     ownHgt = $scrollCont.innerHeight();
-                var scrollbarPos = 0;
-
-                switch (_that.direction) {
-                    case 'right':
-                        scrollbarPos = ($this.innerWidth() - $scrollbarThumb.innerWidth()) * -1;
-                        break;
-                    case 'left':
-                        // scrollbarPos = ($this.innerWidth() - $scrollbarThumb.innerWidth() + 18);
-                        scrollbarPos = 0;
-                        break;
-                }
 
                 this.scrollRatio = ownHgt / totalHgt;
 
-                // this.rAF()(function() { // this.rAF() 함수 사용시 초기 스크롤바 높이값 이슈가 있음.
                 if (_that.scrollRatio >= 1) {
                     $scrollbarTrack.addClass('scrollbar_hide');
                 } else {
                     $scrollbarTrack.removeClass('scrollbar_hide');
                     $scrollbarThumb.css({
-                        top: ($scrollCont.scrollTop() / totalHgt ) * 100 + '%',
-                        // right: scrollbarPos + 'px',
+                        top: ($scrollCont.scrollTop() / totalHgt) * 100 + '%',
                         height: Math.max(_that.scrollRatio * 100, 10) + '%'
                     });
                 }
-                // });
             },
 
             /**
@@ -178,7 +165,7 @@
                 });
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function() {
                 this._createScrollViewDOMRender();
 
@@ -195,17 +182,17 @@
                 }, this));
             },
 
-            /** 이벤트 핸들러  */
+            /* 이벤트 핸들러  */
             evtListener: function(options) {
                 var _that = this;
 
                 this.$scrollCont
-                    .on('scroll', _.debounce(function() { // 스크롤 컨텐츠 이벤트 핸들러
-                        _that.moveBar($(this).closest(options.selector)[0]);
-                    }, 10))
                     .on('mouseenter', function() { // 스크롤 컨텐츠 마우스 오버 이벤트 핸들러
                         _that.moveBar($(this).closest(options.selector)[0]);
-                    });
+                    })
+                    .on('scroll', _.debounce(function() { // 스크롤 컨텐츠 이벤트 핸들러
+                        _that.moveBar($(this).closest(options.selector)[0]);
+                    }, 10));
 
                 // 스크롤바 마우스 다운 이벤트 핸들러
                 this.$scrollbarThumb.on('mousedown', function(e) {

@@ -19,8 +19,8 @@
  * <button type="button" id="btnTest">클릭</button>
  *
  * <div class="toast ui_toast">
- *		<div class="inr">1 등록 되었습니다.</div>
- *		<button type="button" class="btn_close ui_btn_close"><span class="blind">닫기</span></button>
+ *      <div class="inr">1 등록 되었습니다.</div>
+ *      <button type="button" class="btn_close ui_btn_close"><span class="blind">닫기</span></button>
  * </div>
  */
 
@@ -57,8 +57,12 @@
              * @description 토스트팝업 보기
              */
             show: function() {
+                var directionOpt = {};
+
+                directionOpt[this.direction] = 0;
+
                 if (!this.is_animated) {
-                    this.$toast.stop().animate({[this.direction]: 0}).attr({tabindex: 0, 'aria-hidden': false}).addClass('active');
+                    this.$toast.stop().animate(directionOpt).attr({tabindex: 0, 'aria-hidden': false}).addClass('active');
                     this.timer();
                 }
 
@@ -70,6 +74,7 @@
              * @description 토스트팝업 숨김
              */
             hide: function() {
+                var directionOpt = {};
                 var _oriPos = 0;
 
                 switch (this.direction) {
@@ -83,7 +88,9 @@
                         break;
                 }
 
-                this.$toast.stop().animate({[this.direction]: _oriPos}, function() {
+                directionOpt[this.direction] = _oriPos;
+
+                this.$toast.stop().animate(directionOpt, function() {
                     $(this).removeClass('active');
                 }).attr({tabindex: -1, 'aria-hidden': true});
 
@@ -102,27 +109,33 @@
                 }, this.seconds);
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function(options) {
+                var directionOpt = {};
+
                 switch (this.direction) {
                     case 'left' :
                     case 'right' :
-                        this.$toast.css({[this.direction]: -this.toastWidth}).attr({tabindex: -1, 'aria-hidden': true});
+                        directionOpt[this.direction] = -this.toastWidth;
 
-                        if (options.center) {this.$toast.css({top: '50%', marginTop: -this.toastHeight / 2});}
+                        this.$toast.css(directionOpt).attr({tabindex: -1, 'aria-hidden': true});
+
+                        if (options.center) { this.$toast.css({top: '50%', marginTop: -this.toastHeight / 2}); }
                         break;
                     case 'bottom' :
                     case 'top' :
-                        this.$toast.css({[this.direction]: -this.toastHeight}).attr({tabindex: -1, 'aria-hidden': true});
+                        directionOpt[this.direction] = -this.toastHeight;
 
-                        if (options.center) {this.$toast.css({left: '50%', marginLeft: -this.toastWidth / 2});}
-                        if (this.direction === 'bottom') {this.$toast.css({top: 'auto'});}
+                        this.$toast.css(directionOpt).attr({tabindex: -1, 'aria-hidden': true});
+
+                        if (options.center) { this.$toast.css({left: '50%', marginLeft: -this.toastWidth / 2}); }
+                        if (this.direction === 'bottom') { this.$toast.css({top: 'auto'}); }
                         break;
                 }
             },
 
-            /** 이벤트 핸들러 */
-            evtListener: function(options) {
+            /* 이벤트 핸들러 */
+            evtListener: function() {
                 var _this = this;
 
                 this.$btnClose.on('click', function() {

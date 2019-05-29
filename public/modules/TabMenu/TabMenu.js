@@ -35,7 +35,7 @@
         app.tabMenu = core.Class({
             __constructor: function(options) {
                 var defaults = {
-                    selector: '.ui_tab_area', // 탭메뉴 선택자
+                    selector: '.ui_tab_area' // 탭메뉴 선택자
                 };
 
                 options = _.extend(defaults, options);
@@ -66,13 +66,13 @@
                 $nextPanelId.show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function() {
                 this.$firstTab.attr({'aria-selected': true, tabindex: 0});
                 this.$firstPanel.show().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
             },
 
-            /** 이벤트 핸들러  */
+            /* 이벤트 핸들러  */
             evtListener: function() {
                 var _that = this;
 
@@ -130,7 +130,6 @@
                         $panelId.show().focus().attr('tabindex', 0).siblings('.tab_cont').hide().attr('tabindex', -1);
                         $this.parent('li').siblings('li').children('a[role=tab]').attr({'aria-selected': false, tabindex: -1});
                         $this.attr({'aria-selected': true, tabindex: 0});
-
                     }
                 });
             }

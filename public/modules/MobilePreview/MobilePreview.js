@@ -76,11 +76,16 @@
                 this.evtListener(options);
             },
 
+            /**
+             * addDevice
+             * @description 디바이스 추가
+             * @param {Object} options - 옵션
+             */
             addDevice: function(options) {
                 if ($('#' + this.$previewFrame[0].id).length) { throw new Error('동일한 \"' + this.$previewFrame[0].id + '\" 이름의 네이밍이 존재합니다.'); }
 
                 this.$previewFrame.css({position: 'fixed', top: 0, left: 0, width: '320px', height: '480px', paddingTop: (!options.draggable) ? 0 : '15px', border: '2px solid #333', backgroundColor: '#f7f7f7', boxSizing: 'content-box'});
-                this.$previewFrameHeader.css({position: 'absolute',top: 0, right: 0, left: 0, height: '15px', backgroundColor: '#222', cursor: 'move'});
+                this.$previewFrameHeader.css({position: 'absolute', top: 0, right: 0, left: 0, height: '15px', backgroundColor: '#222', cursor: 'move'});
                 this.$iframe.css({width: '100%', height: '100%', border: 0});
 
                 if (!options.draggable) {
@@ -92,12 +97,21 @@
                 this.$body.append(this.$previewFrame);
             },
 
+            /**
+             * removeDevice
+             * @description 디바이스 삭제
+             */
             removeDevice: function() {
                 if (!this.$previewFrame.length) { return; }
 
                 this.$previewFrame.remove();
             },
 
+            /**
+             * setPosition
+             * @description 포지션 설정
+             * @param {Object} options - 옵션
+             */
             setPosition: function(options) {
                 switch (options.position) {
                     case 'top':
@@ -114,7 +128,8 @@
                         break;
                 }
             },
-
+            
+            /* 이벤트 핸들러 */
             evtListener: function(options) {
                 var _that = this,
                     isDrag = false;
@@ -123,7 +138,7 @@
                     this.$previewFrame.draggable({
                         containment: 'parent',
                         start: function() {
-                            isDrag = true
+                            isDrag = true;
 
                             return;
                         },

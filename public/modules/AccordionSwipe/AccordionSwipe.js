@@ -68,12 +68,17 @@
                 this.evtListener();
             },
 
-            /** 스와이프 AsixY 축 이동 */
+            /**
+             * @method move
+             * @description 스와이프 AsixY 축 이동
+             * @param {Object} $selector - jQuery DOM셀렉터
+             * @param {Object} posY - Y축 이동거리
+             */
             move: function($selector, posY) {
                 $selector.animate({top: posY}, this.SPEED);
             },
 
-            /** 이벤트 핸들러 */
+            /* 이벤트 핸들러 */
             evtListener: function() {
                 var _that = this;
 

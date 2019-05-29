@@ -48,7 +48,7 @@
         app.modal = core.Class({
             __constructor: function(options) {
                 var defaults = {
-                    dimmed: '#dimmed', // 딤드레이어
+                    dimmed: '#dimmed' // 딤드레이어
                 };
 
                 options = _.extend(defaults, options);
@@ -70,18 +70,18 @@
             /**
              * @method open
              * @description 레이어 팝업 열기
+             * @param {Object} selector - DOM셀렉터
+             * @param {String} target - 모달타켓
              */
             open: function(selector, target) {
                 this.$select = $(selector);
                 this.target = target;
 
-                var idx = this.$select.index();
-
                 this.$body.addClass('modal_on');
                 this.$wrap.attr('aria-hidden', true);
 
-                (typeof this.$btnPopOpen.eq(idx).data('dimmedShow') === 'undefined' || this.$btnPopOpen.eq(idx).data('dimmedShow'))? this.$dimmed.hide() : this.$dimmed.show();
-
+                (typeof this.$select.data('dimmedShow') === 'undefined' || this.$select.data('dimmedShow')) ? this.$dimmed.show() : this.$dimmed.hide();
+                
                 $(this.target).attr('aria-hidden', false).show().find('a').eq(0).focus();
             },
 
@@ -97,7 +97,7 @@
                 this.$select.focus();
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function(options) {
                 if (!this.$dimmed.length) {
                     this.$body.append('<div id="dimmed" class="dimmed" style="display:none"></div>');
@@ -106,7 +106,7 @@
                 }
             },
 
-            /** 이벤트 핸들러 */
+            /* 이벤트 핸들러 */
             evtListener: function() {
                 var _this = this;
 

@@ -26,7 +26,7 @@ select{border-radius:0}
 /* =Scrolling */
 .scrolling{overflow:hidden;position:relative}
 .scrolling>.scroll_view{overflow:hidden;height:100%}
-.scrolling .scroll_cont{overflow:auto;position:relative;width:100%;height:100%;padding-right:18px} /* 우측여백 padding-right 값 조절 */
+.scrolling .scroll_cont{overflow:auto;position:relative;width:100%;height:100%;padding-right:18px}
 :root .scrolling .scroll_cont{width:calc(100% + 18px);box-sizing:border-box}
 .scrolling .scrollbar_track{position:absolute;top:0;right:0;bottom:0;width:10px;background-color:#eee;transition:opacity .25s linear}
 .scrolling .scrollbar_track.scrollbar_hide{display:none}
@@ -35,7 +35,7 @@ select{border-radius:0}
 .scrolling .scrollbar_thumb:hover,
 .scrolling .scrollbar_thumb:active{background-color:#555;opacity:1}
 .scrolling_direction_lft .scroll_cont{padding-right:0;padding-left:18px}
-.scrolling_direction_lft .scrollbar_track{right:auto;left:0}  /* 좌측여백 padding-left 값 조절 */
-.scrolling_dynamic .scrollbar_track{opacity:0}
+.scrolling_direction_lft .scrollbar_track{right:auto;left:0}
+.scrolling_dynamic .scrollbar_track{opacity:0;filter:alpha(opacity=0)}
 .scrolling_dynamic:hover .scrollbar_track,
-.scrolling_dynamic:active .scrollbar_track{opacity:1}
+.scrolling_dynamic:active .scrollbar_track{opacity:1;filter:alpha(opacity=100)}

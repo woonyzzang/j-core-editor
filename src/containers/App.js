@@ -15,6 +15,8 @@ import * as codeMirrorEditorActions from '../actions/codeMirrorEditor';
 
 import styles from './App.scss';
 
+const devMode = true;  // 빌드할 경우 false 변경
+
 class App extends Component {
     pageTemplateRef = React.createRef();
     outputRef = React.createRef();
@@ -24,6 +26,11 @@ class App extends Component {
         const { codeMirrorEditorHtml, codeMirrorEditorCss, codeMirrorEditorJavaScript, CodeMirrorEditorActions } = this.props;
         const outputFrame = this.outputRef.current,
             output = outputFrame.contentDocument || outputFrame.contentWindow.document;
+        let locationURI = window.location.origin + '/core-uidev';
+
+        if (devMode) {
+            locationURI = window.location.origin;
+        }
 
         output.open();
         output.write(`
@@ -41,9 +48,9 @@ class App extends Component {
                 });
             })(window);
             </script> 
-            <script src="http://127.0.0.1:3000/cdn/libs/jquery-1.10.2.min.js"></script>
-            <script src="http://127.0.0.1:3000/cdn/libs/lodash-3.10.1.min.js"></script>            
-            <script src="http://127.0.0.1:3000/cdn/upleat-core-1.0.3.min.js"></script>
+            <script src="${locationURI}/cdn/libs/jquery-1.10.2.min.js"></script>
+            <script src="${locationURI}/cdn/libs/lodash-3.10.1.min.js"></script>            
+            <script src="${locationURI}/cdn/upleat-core-1.0.3.min.js"></script>
             <script>${codeMirrorEditorJavaScript}</script>
             <style>${codeMirrorEditorCss}</style>
             </head>
@@ -53,7 +60,7 @@ class App extends Component {
         output.close();
 
         CodeMirrorEditorActions.togglePanelOutputTitle((codeMirrorEditorHtml.trim().length)? true : false);
-    }
+    };
 
     /**  패널 사이즈 변경 */
     onPanelChangeSize = (controlsRef) => {
@@ -79,7 +86,7 @@ class App extends Component {
         });
 
         this.pageTemplateRef.current.splitterRef.current.split.setSizes(dataSizes);
-    }
+    };
 
     /** 셋팅 폰트 사이즈 변경 */
     onSelectFontSizeChange = (val) => {
@@ -89,7 +96,7 @@ class App extends Component {
             elem.classList.remove('default', 'small', 'big', 'jabba', 'bigger');
             elem.classList.add(val);
         });
-    }
+    };
 
     /** 첫 렌더링 시점 완료 (컴포넌트 라이프 사이클) */
     componentDidMount() {

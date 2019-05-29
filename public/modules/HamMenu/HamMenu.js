@@ -29,12 +29,12 @@
         app.hamMenu = core.Class({
             __constructor: function(options) {
                 var defaults = {
-                    menuArea: '.ui_ham_menu_area',    // 메뉴 버튼 클래스
-                    menuBtn: '.ui_btn_menu',          // 메뉴 버튼 클래스
-                    menuDim: '.ui_dim_menu',          // 메뉴 바닥(딤드) 클래스
-                    menuCont: '.ui_cont_menu',        // 메뉴 컨텐츠 클래스
-                    moveLeft: '.ui_left_move',        // 메뉴 이동 클래스
-                    speed: 150                        // 메뉴가 튀어나오는 시간 조절
+                    menuArea: '.ui_ham_menu_area', // 메뉴 버튼 클래스
+                    menuBtn: '.ui_btn_menu', // 메뉴 버튼 클래스
+                    menuDim: '.ui_dim_menu', // 메뉴 바닥(딤드) 클래스
+                    menuCont: '.ui_cont_menu', // 메뉴 컨텐츠 클래스
+                    moveLeft: '.ui_left_move', // 메뉴 이동 클래스
+                    speed: 150 // 메뉴가 튀어나오는 시간 조절
                 };
 
                 options = _.extend(defaults, options);
@@ -51,7 +51,7 @@
                 this.evtListener();
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function() {
                 var _that = this;
 
@@ -65,7 +65,7 @@
                 }
             },
 
-            /** 이벤트 핸들러 */
+            /* 이벤트 핸들러 */
             evtListener: function() {
                 var _that = this;
 

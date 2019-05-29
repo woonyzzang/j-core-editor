@@ -49,16 +49,16 @@
 <!-- //accordion_swipe -->
 
 <script>
-;(function(global, doc, core, $, _) {
-    'use strict';
+    ;(function(global, doc, core, $, _) {
+        'use strict';
 
-    core.modules(['AccordionSwipe'], function(Module) {
-        new Module.accordionSwipe({
-            selector: '.ui_accordion_swipe', // 아코디언 스와이프 선택자
-            maxHeight: -150, // 아코디언 스와이프 컨텐츠 펼침 높이값
-            distance: 40, // 아코디언 스와이프 터치 asixY 오차범위 값
-            speed: 250 // 아코디언 스와이프 슬라이딩 속도
+        core.modules(['AccordionSwipe'], function(Module) {
+            new Module.accordionSwipe({
+                // selector: '.ui_accordion_swipe', // DOM 선택자
+                // maxHeight: -150, // asixY 축 높이값
+                // distance: 40, // 오차범위
+                // speed: 250 // 슬라이딩 속도
+            });
         });
-    });
-})(window, document, UPLEAT, jQuery, _);
+    })(window, document, UPLEAT, jQuery, _);
 </script>

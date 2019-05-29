@@ -15,13 +15,11 @@
     core.module.Checkboxes = function(app) {
         app.checkboxes = core.Class({
             __constructor: function(options) {
-                var defaults = {
+                options = _.extend({
                     selector: '.ui_checkboxes',
                     checkboxAll: '.ui_checkbox_all',
                     checkbox: '.ui_checkbox'
-                };
-
-                options = _.extend(defaults, options);
+                }, options);
 
                 this.$selector = $(options.selector);
                 this.$checkboxAll = this.$selector.find(':checkbox' + options.checkboxAll);
@@ -35,7 +33,7 @@
              * @description 선택된 체크박스를 객체로 반환하는 메서드
              * @param {Object} selector - DOM셀렉터
              * @param {Object} options - 옵션
-             * @returns {object}
+             * @return {Object} - 선택 체크박스 객체
              */
             _getCheckedItem: function(selector, options) {
                 return $(selector).find(':checkbox' + options.checkbox).filter(':checked');
@@ -67,7 +65,7 @@
             check: function(selector, options) {
                 var $this = $(selector);
                 var $checkboxes = $this.closest(options.selector);
-                var isCheckedAll = (this._getCheckedItem($checkboxes[0], options).length < $checkboxes.find(':checkbox' + options.checkbox).length)? false : true;
+                var isCheckedAll = !(this._getCheckedItem($checkboxes[0], options).length < $checkboxes.find(':checkbox' + options.checkbox).length);
 
                 if ($this.prop('checked')) {
                     $this.prop('checked', true).attr('checked', true);
@@ -78,7 +76,7 @@
                 $checkboxes.find(':checkbox' + options.checkboxAll).prop('checked', isCheckedAll).attr('checked', isCheckedAll);
             },
 
-            /** 이벤트 핸들러 */
+            /* 이벤트 핸들러 */
             evtListener: function(options) {
                 var _that = this;
 

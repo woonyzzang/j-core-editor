@@ -35,13 +35,13 @@ class PanelSplit extends Component {
         panelName: 'codeMirrorEditorHtml',
         panelTitle: 'Editor Panel',
         codeMirrorConfig: {}
-    }
+    };
 
     static propTypes = {
         panelName: PropTypes.string.isRequired,
         panelTitle: PropTypes.string.isRequired,
         codeMirrorConfig: PropTypes.object
-    }
+    };
     
     /** 에디터 패널 업데이트 변경 이벤트 핸들러 */
     updateCode = (panelName, newCode) => {
@@ -50,7 +50,7 @@ class PanelSplit extends Component {
         setTimeout(() => {
             CodeMirrorEditorActions.setUpdatePanel({panelName, newCode});
         }, 300);
-    }
+    };
 
     render() {
         const cx = classNames.bind(styles);

@@ -76,11 +76,10 @@
             /**
              * @method test
              * @description 테스트를 위한 함수
-             * @param {Object} options - 옵션
              * @param {Object} _this - visualRolling 클래스
              */
-            test: function(options, _this) {
-                console.log(_this.rollingNow + '||');
+            test: function(_this) {
+                $.log(_this.rollingNow + '||');
             },
 
             /**
@@ -137,12 +136,12 @@
                     });
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function() {
                 this.setting();
             },
 
-            /** 이벤트 핸들러 */
+            /* 이벤트 핸들러 */
             evtListener: function(options, _this) {
                 var _rolling;
 
@@ -156,13 +155,13 @@
 
                 function rollingEach(direction) {
                     if (!(options.direction === direction)) {
-                        var cur_direction = options.direction;
+                        var curDirection = options.direction;
 
                         options.direction = direction;
 
                         _this.rolling(options, _this);
 
-                        options.direction = cur_direction;
+                        options.direction = curDirection;
                     } else {
                         _this.rolling(options, _this);
                     }

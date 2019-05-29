@@ -20,12 +20,14 @@ input[type=number]::-webkit-calendar-picker-indicator{display:none}
 input[type=number]{-moz-appearance:textfield}
 select{border-radius:0}
 
-/* =Tab Area */
-.tab_area{width:100%}
-.tab_area .tab_menu{}
-.tab_area .tab_menu:after{display:table;content:'';clear:both}
-.tab_area .tab_menu li{float:left;margin-left:4px}
-.tab_area .tab_menu li:first-child{margin-left:0}
-.tab_area .tab_menu a{display:block;padding:10px 24px;background-color:#337ab7;color:#fff;text-align:center}
-.tab_area .tab_menu a[aria-selected=true]{background-color:#e7edf2;font-weight:bold;color:#333}
-.tab_area .tab_cont{padding:20px;background-color:#e7edf2}
+/** Custom Style */
+body{height:3000px}
+
+/* =Progress Scroll Indicator */
+.progress_scroll_indicator{position:fixed;top:0;left:0;z-index:10;background-color:#e5e6eb}
+.progress_scroll_indicator .progress_scroll_bar{height:100%;background-color:#5b76f5}
+.progress_scroll_indicator .progress_scroll_output{position:absolute;padding:2px;font-size:11px;white-space:nowrap}
+.progress_scroll_indicator[data-direction=horizontal]{right:0;height:6px}
+.progress_scroll_indicator[data-direction=horizontal] .progress_scroll_output{top:100%;right:0}
+.progress_scroll_indicator[data-direction=vertical]{bottom:0;width:6px}
+.progress_scroll_indicator[data-direction=vertical] .progress_scroll_output{bottom:0;left:100%}

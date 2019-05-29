@@ -1,0 +1,28 @@
+<!-- progress_scroll_indicator -->
+<div class="progress_scroll_indicator ui_progress_scroll_indicator">
+    <div class="progress_scroll_bar"></div>
+</div>
+<!-- //progress_scroll_indicator -->
+
+<script>
+    ;(function(global, doc, core, $) {
+        'use strict';
+
+        core.modules(['ProgressScrollIndicator'], function(Module) {
+            new Module.progressScrollIndicator({
+                selector: '.ui_progress_scroll_indicator', // DOM 선택자
+                // direction: 'vertical', // 프로그레스 인디케이터 방향
+                percentageEnabled: true, // 프로그레스 인디케이터 진행률 표시여부
+                // onStart: function() { // 스크롤 시작일 시 콜백함수
+                //     console.log('onStart');
+                // },
+                // onProgress: function(per) { // 스크롤 중일 시 콜백함수
+                //     console.log(per);
+                // },
+                // onEnd: function() { // 스크롤 마지막일 시 콜백함수
+                //     console.log('onEnd');
+                // }
+            });
+        });
+    })(window, document, UPLEAT, jQuery);
+</script>

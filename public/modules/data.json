@@ -1,30 +1,30 @@
 [
   {
-    "module": "accodian",
+    "module": "accordian",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/Accordion/Accordion.html",
-      "css": "http://127.0.0.1:3000/modules/Accordion/Accordion.css",
-      "javascript": "http://127.0.0.1:3000/modules/Accordion/Accordion.js"
+      "html": "/modules/Accordion/Accordion.html",
+      "css": "/modules/Accordion/Accordion.css",
+      "javascript": "/modules/Accordion/Accordion.js"
     },
     "version": "v1.0.0",
     "author": "조연승"
   },
   {
-    "module": "accodianCover",
+    "module": "accordianCover",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/AccordionCover/AccordionCover.html",
-      "css": "http://127.0.0.1:3000/modules/AccordionCover/AccordionCover.css",
-      "javascript": "http://127.0.0.1:3000/modules/AccordionCover/AccordionCover.js"
+      "html": "/modules/AccordionCover/AccordionCover.html",
+      "css": "/modules/AccordionCover/AccordionCover.css",
+      "javascript": "/modules/AccordionCover/AccordionCover.js"
     },
     "version": "v1.0.0",
     "author": "조승운"
   },
   {
-    "module": "accodianSwipe",
+    "module": "accordianSwipe",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/AccordionSwipe/AccordionSwipe.html",
-      "css": "http://127.0.0.1:3000/modules/AccordionSwipe/AccordionSwipe.css",
-      "javascript": "http://127.0.0.1:3000/modules/AccordionSwipe/AccordionSwipe.js"
+      "html": "/modules/AccordionSwipe/AccordionSwipe.html",
+      "css": "/modules/AccordionSwipe/AccordionSwipe.css",
+      "javascript": "/modules/AccordionSwipe/AccordionSwipe.js"
     },
     "version": "v1.0.0",
     "author": "조승운"
@@ -32,9 +32,9 @@
   {
     "module": "checkboxes",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/Checkboxes/Checkboxes.html",
-      "css": "http://127.0.0.1:3000/modules/Checkboxes/Checkboxes.css",
-      "javascript": "http://127.0.0.1:3000/modules/Checkboxes/Checkboxes.js"
+      "html": "/modules/Checkboxes/Checkboxes.html",
+      "css": "/modules/Checkboxes/Checkboxes.css",
+      "javascript": "/modules/Checkboxes/Checkboxes.js"
     },
     "version": "v1.0.0",
     "author": "김규연"
@@ -42,9 +42,9 @@
   {
     "module": "mobileDeviceInfo",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/MobileDeviceInfo/MobileDeviceInfo.html",
-      "css": "http://127.0.0.1:3000/modules/MobileDeviceInfo/MobileDeviceInfo.css",
-      "javascript": "http://127.0.0.1:3000/modules/MobileDeviceInfo/MobileDeviceInfo.js"
+      "html": "/modules/MobileDeviceInfo/MobileDeviceInfo.html",
+      "css": "/modules/MobileDeviceInfo/MobileDeviceInfo.css",
+      "javascript": "/modules/MobileDeviceInfo/MobileDeviceInfo.js"
     },
     "version": "v1.0.0",
     "author": "조승운"
@@ -52,9 +52,9 @@
   {
     "module": "mobilePreview",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/MobilePreview/MobilePreview.html",
-      "css": "http://127.0.0.1:3000/modules/MobilePreview/MobilePreview.css",
-      "javascript": "http://127.0.0.1:3000/modules/MobilePreview/MobilePreview.js"
+      "html": "/modules/MobilePreview/MobilePreview.html",
+      "css": "/modules/MobilePreview/MobilePreview.css",
+      "javascript": "/modules/MobilePreview/MobilePreview.js"
     },
     "version": "v1.0.0",
     "author": "조승운"
@@ -62,9 +62,9 @@
   {
     "module": "modal",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/Modal/Modal.html",
-      "css": "http://127.0.0.1:3000/modules/Modal/Modal.css",
-      "javascript": "http://127.0.0.1:3000/modules/Modal/Modal.js"
+      "html": "/modules/Modal/Modal.html",
+      "css": "/modules/Modal/Modal.css",
+      "javascript": "/modules/Modal/Modal.js"
     },
     "version": "v1.0.0",
     "author": "백은숙"
@@ -72,9 +72,19 @@
   {
     "module": "scrolling",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/Scrolling/Scrolling.html",
-      "css": "http://127.0.0.1:3000/modules/Scrolling/Scrolling.css",
-      "javascript": "http://127.0.0.1:3000/modules/Scrolling/Scrolling.js"
+      "html": "/modules/Scrolling/Scrolling.html",
+      "css": "/modules/Scrolling/Scrolling.css",
+      "javascript": "/modules/Scrolling/Scrolling.js"
+    },
+    "version": "v1.0.0",
+    "author": "조승운"
+  },
+  {
+    "module": "progressScrollIndicator",
+    "url": {
+      "html": "/modules/ProgressScrollIndicator/ProgressScrollIndicator.html",
+      "css": "/modules/ProgressScrollIndicator/ProgressScrollIndicator.css",
+      "javascript": "/modules/ProgressScrollIndicator/ProgressScrollIndicator.js"
     },
     "version": "v1.0.0",
     "author": "조승운"
@@ -82,9 +92,9 @@
   {
     "module": "selectbox",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/Selectbox/Selectbox.html",
-      "css": "http://127.0.0.1:3000/modules/Selectbox/Selectbox.css",
-      "javascript": "http://127.0.0.1:3000/modules/Selectbox/Selectbox.js"
+      "html": "/modules/Selectbox/Selectbox.html",
+      "css": "/modules/Selectbox/Selectbox.css",
+      "javascript": "/modules/Selectbox/Selectbox.js"
     },
     "version": "v1.0.0",
     "author": "송민규"
@@ -92,9 +102,9 @@
   {
     "module": "tabMemu",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.html",
-      "css": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.css",
-      "javascript": "http://127.0.0.1:3000/modules/TabMenu/TabMenu.js"
+      "html": "/modules/TabMenu/TabMenu.html",
+      "css": "/modules/TabMenu/TabMenu.css",
+      "javascript": "/modules/TabMenu/TabMenu.js"
     },
     "version": "v1.0.1",
     "author": "정란"
@@ -102,9 +112,9 @@
   {
     "module": "toast",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/Toast/Toast.html",
-      "css": "http://127.0.0.1:3000/modules/Toast/Toast.css",
-      "javascript": "http://127.0.0.1:3000/modules/Toast/Toast.js"
+      "html": "/modules/Toast/Toast.html",
+      "css": "/modules/Toast/Toast.css",
+      "javascript": "/modules/Toast/Toast.js"
     },
     "version": "v1.0.0",
     "author": "남인태"
@@ -112,9 +122,9 @@
   {
     "module": "visualRolling",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/VisualRolling/VisualRolling.html",
-      "css": "http://127.0.0.1:3000/modules/VisualRolling/VisualRolling.css",
-      "javascript": "http://127.0.0.1:3000/modules/VisualRolling/VisualRolling.js"
+      "html": "/modules/VisualRolling/VisualRolling.html",
+      "css": "/modules/VisualRolling/VisualRolling.css",
+      "javascript": "/modules/VisualRolling/VisualRolling.js"
     },
     "version": "v1.0.0",
     "author": "노영일"
@@ -122,9 +132,9 @@
   {
     "module": "hamMenu",
     "url": {
-      "html": "http://127.0.0.1:3000/modules/HamMenu/HamMenu.html",
-      "css": "http://127.0.0.1:3000/modules/HamMenu/HamMenu.css",
-      "javascript": "http://127.0.0.1:3000/modules/HamMenu/HamMenu.js"
+      "html": "/modules/HamMenu/HamMenu.html",
+      "css": "/modules/HamMenu/HamMenu.css",
+      "javascript": "/modules/HamMenu/HamMenu.js"
     },
     "version": "v1.0.0",
     "author": "오지환"

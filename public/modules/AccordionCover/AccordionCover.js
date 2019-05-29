@@ -27,7 +27,7 @@
                 var defaults = {
                     selector: '.ui_accordion_area', // 아코디언 틀 선택자
                     title: 'accordion_tit', // 아코디언 타이틀 클래스명
-                    content: 'accordion_cont', //아코디언 콘텐츠 클래스명
+                    content: 'accordion_cont', // 아코디언 콘텐츠 클래스명
                     sliding: false, // 아코디언 슬라이딩 효과 유무
                     easing: 'swing', // 아코디언 슬라이딩 효과
                     seconds: 400, // 아코디언 슬라이딩 속도
@@ -81,7 +81,7 @@
             },
 
             /**
-             * @method panelCollapse
+             * @method panelExpansion
              * @description 패널 펼치기
              * @param {Object} elem - DOM셀렉터
              * @param {Object} options - 옵션
@@ -118,13 +118,13 @@
                 }
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function() {
                 this.$tit.attr({title: '비활성화', role: 'heading', 'aria-expanded': false}); // 접근성관련 타이틀 헤딩태그
                 this.$cont.attr({tabindex: -1, role: 'region', 'aria-hidden': true}); // 접근성관련 콘텐츠 헤딩태그
             },
 
-            /** 이벤트 핸들러 */
+            /* 이벤트 핸들러 */
             evtListener: function(options) {
                 var _this = this;
 
@@ -132,7 +132,7 @@
                     e.preventDefault();
 
                     if (!$(this).next(this.$cont).is(':animated')) {
-                        (!$(this).is('.active'))? _this.panelExpansion(this, options) : _this.panelCollapse(this, options);
+                        (!$(this).is('.active')) ? _this.panelExpansion(this, options) : _this.panelCollapse(this, options);
                     }
                 });
             }
@@ -172,7 +172,7 @@
                 this.__base(options);
             },
 
-            /** 초기화 */
+            /* 초기화 */
             _init: function() {
                 this.__base();
 
@@ -186,10 +186,10 @@
                 this.panelMaxWid = (100 - (((accordionItemWid * accordionItemSize) / accordionWid) * 100)) + '%';
 
                 this.panelExpansion(this.$tit.eq(0)[0], {multi: true});
-                this.$accordionItem.eq(0).css({width:  this.panelMaxWid}).siblings('li').css({width:  this.panelMinWid});
+                this.$accordionItem.eq(0).css({width: this.panelMaxWid}).siblings('li').css({width: this.panelMinWid});
             },
 
-            /** 이벤트 핸들러 */
+            /* 이벤트 핸들러 */
             evtListener: function(options) {
                 this.__base(options);
 
@@ -202,7 +202,7 @@
 
                     if ($this.hasClass('active')) { return; }
                     if (!$this.next(this.$cont).is(':animated')) {
-                        (!$this.is('.active'))? _that.panelExpansion(this, options) : _that.panelCollapse(this, options);
+                        (!$this.is('.active')) ? _that.panelExpansion(this, options) : _that.panelCollapse(this, options);
                     }
 
                     $this.parent('li').animate({width: _that.panelMaxWid}, {duration: options.seconds, easing: options.easing}).siblings('li').animate({width: _that.panelMinWid}, {duration: options.seconds, easing: options.easing});
