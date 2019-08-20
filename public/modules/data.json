@@ -40,6 +40,26 @@
     "author": "김규연"
   },
   {
+    "module": "freezeTable",
+    "url": {
+      "html": "/modules/FreezeTable/FreezeTable.html",
+      "css": "/modules/FreezeTable/FreezeTable.css",
+      "javascript": "/modules/FreezeTable/FreezeTable.js"
+    },
+    "version": "v1.0.0",
+    "author": "조승운"
+  },
+  {
+    "module": "hamMenu",
+    "url": {
+      "html": "/modules/HamMenu/HamMenu.html",
+      "css": "/modules/HamMenu/HamMenu.css",
+      "javascript": "/modules/HamMenu/HamMenu.js"
+    },
+    "version": "v1.0.0",
+    "author": "오지환"
+  },
+  {
     "module": "mobileDeviceInfo",
     "url": {
       "html": "/modules/MobileDeviceInfo/MobileDeviceInfo.html",
@@ -70,21 +90,21 @@
     "author": "백은숙"
   },
   {
-    "module": "scrolling",
-    "url": {
-      "html": "/modules/Scrolling/Scrolling.html",
-      "css": "/modules/Scrolling/Scrolling.css",
-      "javascript": "/modules/Scrolling/Scrolling.js"
-    },
-    "version": "v1.0.0",
-    "author": "조승운"
-  },
-  {
     "module": "progressScrollIndicator",
     "url": {
       "html": "/modules/ProgressScrollIndicator/ProgressScrollIndicator.html",
       "css": "/modules/ProgressScrollIndicator/ProgressScrollIndicator.css",
       "javascript": "/modules/ProgressScrollIndicator/ProgressScrollIndicator.js"
+    },
+    "version": "v1.0.0",
+    "author": "조승운"
+  },
+  {
+    "module": "scrolling",
+    "url": {
+      "html": "/modules/Scrolling/Scrolling.html",
+      "css": "/modules/Scrolling/Scrolling.css",
+      "javascript": "/modules/Scrolling/Scrolling.js"
     },
     "version": "v1.0.0",
     "author": "조승운"
@@ -128,15 +148,5 @@
     },
     "version": "v1.0.0",
     "author": "노영일"
-  },
-  {
-    "module": "hamMenu",
-    "url": {
-      "html": "/modules/HamMenu/HamMenu.html",
-      "css": "/modules/HamMenu/HamMenu.css",
-      "javascript": "/modules/HamMenu/HamMenu.js"
-    },
-    "version": "v1.0.0",
-    "author": "오지환"
   }
 ]

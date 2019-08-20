@@ -1,0 +1,122 @@
+<!-- freeze_tbl_area -->
+<div class="freeze_tbl_area ui_freeze_tbl_area">
+    <div class="tbl" style="max-height:300px">
+        <!-- [D] 가로스크롤 필요한 경우 table 엘리먼트에 인라인 스타일 min-width 값 추가 -->
+        <table style="min-width:1000px">
+            <colgroup>
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:20%">
+                <col>
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">A1</th>
+                    <th scope="col">A2</th>
+                    <th scope="col">A3</th>
+                    <th scope="col">A4</th>
+                    <th scope="col">A5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+                <tr>
+                    <td>A1-Cell</td>
+                    <td>A2-Cell</td>
+                    <td>A3-Cell</td>
+                    <td>A4-Cell</td>
+                    <td>A5-Cell</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>A1</th>
+                    <td>A2</td>
+                    <td>A3</td>
+                    <td>A4</td>
+                    <td>A5</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<!-- //freeze_tbl_area -->
+
+<script>
+;(function(global, doc, core, $) {
+    'use strict';
+
+    core.modules(['FreezeTable'], function(Module) {
+        new Module.freezeTable({
+            selector: '.ui_freeze_tbl_area', // DOM 선택자
+            templTableClone: true, // 테이블 템플릿 복제 사용
+            freezeHead: true, // 테이블 thead 고정
+            freezeFoot: true, // 테이블 tfoot 고정
+            freezeColumnNum: 2 // 테이블 column 고정 갯수
+        });
+    });
+})(window, document, UPLEAT, jQuery);
+</script>
