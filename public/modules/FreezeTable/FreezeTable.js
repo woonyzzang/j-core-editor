@@ -1,7 +1,7 @@
 /**
  * [UPLEAT] UI Dev Team
  * @module FreezeTable
- * @description Fixed 스크롤 테이블
+ * @description 고정형 스크롤링 테이블
  * @author Joe Seung Woon
  * @email seungwoon@upleat.com
  * @create 2019.08.20
@@ -159,7 +159,7 @@
                             });
                         });
 
-                        if (this.$tfoot.length) {
+                        if (_.isElement(this.$tfoot[0])) {
                             _.forEach(this.$tblTfootTempl.find('tr'), function(elem) {
                                 _.forEach($(elem).children('th, td'), function(elem, index) {
                                     if (index < options.freezeColumnNum) { _that.setAttrCustomData($(elem), 'freeze-column', true); }
@@ -182,7 +182,7 @@
                             });
                         });
 
-                        if (this.$tfoot.length) {
+                        if (_.isElement(this.$tfoot[0])) {
                             _.forEach(this.$tfoot.children('tr'), function(elem) {
                                 _.forEach($(elem).children('th, td'), function(elem, index) {
                                     if (index < options.freezeColumnNum) { _that.setAttrCustomData($(elem), 'freeze-column', true); }
@@ -219,18 +219,19 @@
                             _that.$tblTheadTempl.find('th[data-freeze-column=true]').css((core.css3.support3D) ? {Transform: 'translate3d(' + scrollLeft + 'px,' + '0, 0)'} : {left: scrollLeft});
                             _that.$tbody.find('th[data-freeze-column=true], td[data-freeze-column=true]').css((core.css3.support3D) ? {Transform: 'translate3d(' + scrollLeft + 'px, 0, 0)'} : {left: scrollLeft});
 
-                            if (_that.$tfoot.length) {
+                            if (_.isElement(_that.$tfoot[0])) {
                                 _that.$tblTfootTempl.find('th[data-freeze-column=true], td[data-freeze-column=true]').css((core.css3.support3D) ? {Transform: 'translate3d(' + scrollLeft + 'px,' + '0, 0)'} : {left: scrollLeft});
                             }
                         }
                     } else {
+                        var freezeFootPosY;
+
                         if (options.freezeHead) {
                             _that.$thead.find('th[data-freeze-thead=true]').css((core.css3.support3D) ? {Transform: 'translate3d(0, ' + scrollTop + 'px, 0)'} : {top: scrollTop});
                         }
 
                         if (options.freezeFoot) {
-                            var freezeFootPosY = (_that.$freezeTblArea.height() - _that.$table.height()) + scrollTop;
-
+                            freezeFootPosY = (_that.$freezeTblArea.height() - _that.$table.height()) + scrollTop;
                             freezeFootPosY += (_that.isHorizontalScrollable()) ? 0 : -_that.scrollbarSpace;
 
                             _that.$tfoot.find('th[data-freeze-tfoot=true], td[data-freeze-tfoot=true]').css((core.css3.support3D) ? {Transform: 'translate3d(0,' + freezeFootPosY + 'px, 0)'} : {top: freezeFootPosY});
@@ -240,31 +241,22 @@
                             _that.$thead.find('th[data-freeze-column=true]').css((core.css3.support3D) ? {Transform: 'translate3d(' + scrollLeft + 'px,' + ((options.freezeHead) ? scrollTop : 0) + 'px, 0)'} : {left: scrollLeft});
                             _that.$tbody.find('th[data-freeze-column=true], td[data-freeze-column=true]').css((core.css3.support3D) ? {Transform: 'translate3d(' + scrollLeft + 'px, 0, 0)'} : {left: scrollLeft});
 
-                            if (_that.$tfoot.length) {
-                                freezeFootPosY = (freezeFootPosY) ? freezeFootPosY : 0;
+                            if (_.isElement(_that.$tfoot[0])) {
+                                freezeFootPosY = (!_.isUndefined(freezeFootPosY)) ? freezeFootPosY : 0;
 
                                 _that.$tfoot.find('th[data-freeze-column=true], td[data-freeze-column=true]').css((core.css3.support3D) ? {Transform: 'translate3d(' + scrollLeft + 'px,' + freezeFootPosY + 'px, 0)'} : {left: scrollLeft});
                             }
                         }
                     }
-                });
+                }).trigger('scroll');
 
-                $(global)
-                    .on('resize', _.debounce(function() {
-                        if (options.templTableClone) {
-                            if (options.freezeFoot) {
-                                _that.$tblTfootTempl.css({bottom: (_that.isHorizontalScrollable()) ? 0 : _that.scrollbarSpace});
-                            }
-                        } else {
-                            if (options.freezeFoot) {
-                                var freezeFootPosY = (_that.$freezeTblArea.height() - _that.$table.height()) + _that.$tbl[0].scrollTop;
-
-                                freezeFootPosY += (_that.isHorizontalScrollable()) ? 0 : -_that.scrollbarSpace;
-
-                                _that.$tfoot.find('th[data-freeze-tfoot=true], td[data-freeze-tfoot=true]').css((core.css3.support3D) ? {Transform: 'translate3d(0,' + freezeFootPosY + 'px, 0)'} : {top: freezeFootPosY});
-                            }
+                $(global).on('resize', _.debounce(function() {
+                    if (options.templTableClone) {
+                        if (options.freezeFoot) {
+                            _that.$tblTfootTempl.css({bottom: (_that.isHorizontalScrollable()) ? 0 : _that.scrollbarSpace});
                         }
-                    }, 25));
+                    }
+                }, 25));
             }
         });
     };
